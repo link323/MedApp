@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@color/colorBackground">
+
+       <!-- <TextView
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:text="zmierz poziom cukru"
+            android:id="@+id/diabeticText"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            style="@style/style_big_green"
+            android:layout_above="@+id/diabeticButton" />-->
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diabetic"
+            android:id="@+id/diabeticButton"
+            android:textSize="30dp"
+            android:background="@color/colorText1"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="144dp"
+            android:layout_alignLeft="@+id/pressureButton"
+            android:layout_alignStart="@+id/pressureButton" />
+
+        <!--<TextView
+            android:layout_width="398dp"
+            android:layout_height="wrap_content"
+            android:text="zmierz ciśnienie krwi"
+            android:id="@+id/pressureText"
+            style="@style/style_big_violet"
+            android:layout_above="@+id/pressureButton"
+            android:layout_centerHorizontal="true" />-->
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bloodPresure"
+            android:textSize="30dp"
+            android:id="@+id/pressureButton"
+            android:background="@color/colorText2"
+            android:layout_below="@+id/diabeticButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="106dp" />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="style_big_green">
+        <item name="android:textSize">40dp</item>
+        <item name="android:textColor">@color/colorText1</item>
+    </style>
+    <style name="style_big_violet">
+        <item name="android:textSize">40dp</item>
+        <item name="android:textColor">@color/colorText2</item>
+    </style>
+
+</resources>
