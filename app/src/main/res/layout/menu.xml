@@ -26,10 +26,9 @@
             android:textSize="30dp"
             android:background="@color/colorText1"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="81dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="144dp"
-            android:layout_alignLeft="@+id/pressureButton"
-            android:layout_alignStart="@+id/pressureButton" />
+            android:layout_centerHorizontal="true" />
 
         <!--<TextView
             android:layout_width="398dp"
@@ -47,10 +46,21 @@
             android:textSize="30dp"
             android:id="@+id/pressureButton"
             android:background="@color/colorText2"
+            android:layout_marginTop="66dp"
             android:layout_below="@+id/diabeticButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="106dp" />
+            android:layout_alignLeft="@+id/diabeticButton"
+            android:layout_alignStart="@+id/diabeticButton" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/results"
+            android:id="@+id/resultsButton"
+            android:textSize="30dp"
+            android:background="@color/colorPrimary"
+            android:layout_below="@+id/pressureButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="76dp" />
 
 
 </RelativeLayout>
