@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".HomeActivity"
+            android:name=".views.HomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,15 +27,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUPActivity"/>
+            android:name=".views.SignUPActivity"/>
         <activity
-            android:name=".MenuActivity"/>
+            android:name=".views.MenuActivity"/>
         <activity
-            android:name=".DiabeticActivity"/>
+            android:name=".views.DiabeticActivity"/>
         <activity
-            android:name=".BloodPressureActivity"/>
+            android:name=".views.BloodPressureActivity"/>
         <activity
-            android:name=".ResultsActivity"/>
+            android:name=".views.ResultsActivity"/>
     </application>
 
 </manifest>
