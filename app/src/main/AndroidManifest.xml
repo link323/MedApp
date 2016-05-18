@@ -29,13 +29,9 @@
         <activity
             android:name=".views.SignUPActivity"/>
         <activity
-            android:name=".views.MenuActivity"/>
-        <activity
-            android:name=".views.DiabeticActivity"/>
-        <activity
-            android:name=".views.BloodPressureActivity"/>
-        <activity
             android:name=".views.ResultsActivity"/>
+        <activity
+            android:name=".views.MenuTabsActivity"/>
     </application>
 
 </manifest>

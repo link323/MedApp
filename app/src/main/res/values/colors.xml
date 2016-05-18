@@ -3,8 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorBackground">#dfe4e3</color>
+    <color name="colorBackground">#559eea</color>
     <color name="colorText1">#50d24e</color>
     <color name="colorText2">#b033ea</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#d1e6ff</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="input">#ffffff</color>
+    <color name="loginButtonColor">#0f4783</color>
+    <color name="registerButtonColor">#063f7b</color>
 </resources>

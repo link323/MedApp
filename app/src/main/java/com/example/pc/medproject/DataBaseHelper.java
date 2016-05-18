@@ -8,7 +8,53 @@ import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper
 {
-	public DataBaseHelper(Context context, String name,CursorFactory factory, int version) 
+	//public static final int NAME_COLUMN = 1;
+	public static final String DATABASE_NAME = "MEDdatabase.db";
+	public static final int DATABASE_VERSION = 2;
+
+	public static final String USER_TABLE = "users";
+	public static final String USER_DATA_TABLE = "user_data";
+	public static final String DIABETIC_RESULTS_TABLE = "diabetic_results";
+	public static final String BLOOD_PRESSURE_RESULTS_TABLE = "pressure_results";
+
+	public static final String ID_COLUMN = "id";
+	public static final String USERNAME_COLUMN = "name";
+	public static final String PASSWORD_COLUMN = "password";
+	public static final String FIRSTNAME_COLUMN = "firstname";
+	public static final String LASTNAME_COLUMN = "lastname";
+	public static final String PESEL_COLUMN = "pesel";
+
+	public static final String RESULT_COLUMN = "result";
+	public static final String FOOD_COLUMN = "food";
+	public static final String SYSTOLIC_COLUMN = "result"; //skurczowe
+	public static final String DIASTOLIC_COLUMN = "result"; //rozkurczowe
+	public static final String DATE_COLUMN = "date";
+
+
+	static final String CREATE_USER_TABLE = "create table " + USER_TABLE + "( "
+			+ ID_COLUMN +" integer primary key autoincrement,"
+			+ USERNAME_COLUMN + " text, "
+			+ PASSWORD_COLUMN+" text" +"); ";
+
+	static final String CREATE_USER_DATA_TABLE = "create table " + USER_DATA_TABLE + "( "
+			+ ID_COLUMN +" integer primary key, "
+			+ FIRSTNAME_COLUMN + " text, "
+			+ LASTNAME_COLUMN+" text,"
+			+ PESEL_COLUMN+ " text "+"); ";
+
+	static final String CREATE_RESULTS_TABLE_1 = "create table " + DIABETIC_RESULTS_TABLE + "( "
+			+ ID_COLUMN + " integer primary key, "
+			+ RESULT_COLUMN + " float "
+			+ DATE_COLUMN + " date "
+			+ FOOD_COLUMN + "boolean" +"); ";
+
+	static final String CREATE_RESULTS_TABLE_2 = "create table " + BLOOD_PRESSURE_RESULTS_TABLE + "( "
+			+ ID_COLUMN +" integer primary key,"
+			+ SYSTOLIC_COLUMN + "int"
+			+ DIASTOLIC_COLUMN + " int "
+			+ DATE_COLUMN + " date " + "); ";
+
+	public DataBaseHelper(Context context, String name, CursorFactory factory, int version)
     {
 	           super(context, name, factory, version);
 	}
@@ -27,9 +73,10 @@ public class DataBaseHelper extends SQLiteOpenHelper
 	@Override
 	public void onCreate(SQLiteDatabase _db) 
 	{
-			_db.execSQL(DataBaseAdapter.CREATE_USER_TABLE);
-			_db.execSQL(DataBaseAdapter.CREATE_RESULTS_TABLE_1);
-			_db.execSQL(DataBaseAdapter.CREATE_RESULTS_TABLE_2);
+		_db.execSQL(CREATE_USER_TABLE);
+		_db.execSQL(CREATE_USER_DATA_TABLE);
+		_db.execSQL(CREATE_RESULTS_TABLE_1);
+		_db.execSQL(CREATE_RESULTS_TABLE_2);
 			
 	}
 
@@ -38,17 +85,14 @@ public class DataBaseHelper extends SQLiteOpenHelper
 	@Override
 	public void onUpgrade(SQLiteDatabase _db, int _oldVersion, int _newVersion) 
 	{
-			// Log the version upgrade.
-			Log.w("TaskDBAdapter", "Upgrading from version " +_oldVersion + " to " +_newVersion + ", which will destroy all old data");
-	
-	
-			// Upgrade the existing database to conform to the new version. Multiple
-			// previous versions can be handled by comparing _oldVersion and _newVersion
-			// values.
-			// The simplest case is to drop the old table and create a new one.
-			_db.execSQL("DROP TABLE IF EXISTS " + "TEMPLATE");
-			// Create a new one.
-			onCreate(_db);
+		Log.w("TaskDBAdapter", "Upgrading from version " +_oldVersion + " to " +_newVersion + ", which will destroy all old data");
+
+		_db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE);
+		_db.execSQL("DROP TABLE IF EXISTS " + USER_DATA_TABLE);
+		_db.execSQL("DROP TABLE IF EXISTS " + BLOOD_PRESSURE_RESULTS_TABLE);
+		_db.execSQL("DROP TABLE IF EXISTS " + DIABETIC_RESULTS_TABLE);
+
+		onCreate(_db);
 	}
 	
 

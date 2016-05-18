@@ -10,29 +10,58 @@
     <EditText android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:hint="nazwa użytkownika"
-        android:id="@+id/editTextUserName">
-        <requestFocus/>
+        android:id="@+id/editTextUserName"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input"
+        android:ems="10"
+        android:layout_margin="20dp">
     </EditText>
 
     <EditText android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:hint="hasło"
-        android:id="@+id/editTextPassword"
-        android:inputType="textPassword"/>
+        android:layout_width="match_parent"
+        android:hint="pesel"
+        android:inputType="numberDecimal"
+        android:id="@+id/editTextPesel"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input"
+        android:ems="10"
+        android:layout_margin="20dp">
+    </EditText>
 
     <EditText android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
+        android:hint="hasło"
+        android:id="@+id/editTextPassword"
+        android:inputType="textPassword"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input"
+        android:layout_margin="20dp"/>
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         android:hint="powtórz hasło"
         android:id="@+id/editTextConfirmPassword"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input"
+        android:layout_margin="20dp" />
 
     <Button android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:id="@+id/buttonCreateAccount"
-        android:layout_marginBottom="60dp"
+        android:layout_margin="20dp"
         android:text="@string/register"
         android:textColor="@color/colorWhite"
         android:textSize="30dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/loginButtonColor"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

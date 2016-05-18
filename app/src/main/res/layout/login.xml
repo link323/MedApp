@@ -11,8 +11,10 @@
         android:ems="10"
         android:hint="Login"
         android:layout_margin="20dp"
-        android:id="@+id/editTextUserNameToLogin">
-        <requestFocus/>
+        android:id="@+id/editTextUserNameToLogin"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input">
     </EditText>
 
     <EditText android:layout_height="wrap_content"
@@ -21,7 +23,10 @@
         android:layout_margin="20dp"
         android:hint="Hasło"
         android:id="@+id/editTextPasswordToLogin"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input"/>
 
     <Button android:layout_height="wrap_content"
         android:layout_width="fill_parent"
@@ -29,6 +34,18 @@
         android:text="@string/signIn"
         android:textColor="@color/colorWhite"
         android:textSize="30dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/loginButtonColor"
         android:layout_margin="20dp"/>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:id="@+id/buttonSignUp"
+        android:text="zarejestruj"
+        android:textColor="@color/colorWhite"
+        android:textSize="30dp"
+        android:background="@color/registerButtonColor"
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
