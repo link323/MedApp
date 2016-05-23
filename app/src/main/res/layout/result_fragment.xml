@@ -4,22 +4,33 @@
     android:layout_height="match_parent"
     tools:context="info.androidhive.materialtabs.fragments.OneFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:id="@+id/header_table"
         android:layout_height="wrap_content"
-        android:text="@string/diabetic"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"
-        android:id="@+id/textView3" />
+        android:layout_width="match_parent"
+        android:stretchColumns="*">
+    </TableLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
-        android:layout_above="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="73dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:id="@+id/content_table"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:stretchColumns="*">
+        </TableLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
+<!--    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_column="23"
+        android:src="@drawable/refresh"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />-->

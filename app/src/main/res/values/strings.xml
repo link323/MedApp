@@ -24,4 +24,6 @@
     <string name="param1">ciśnienie skurczowe</string>
     <string name="param2">ciśnienie rozkurczowe</string>
     <string name="results">twoje wyniki</string>
+    <string name="addData">zapisz</string>
+    <string name="setTime">ustaw</string>
 </resources>

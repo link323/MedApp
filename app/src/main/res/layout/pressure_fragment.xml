@@ -8,17 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
-            android:layout_column="23"
-            android:src="@drawable/refresh"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,9 +15,9 @@
             android:id="@+id/button"
             android:background="@color/colorText2"
             android:textSize="30dp"
-            android:layout_marginTop="55dp"
-            android:layout_below="@+id/textView"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="139dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,9 +25,8 @@
             android:text="/"
             android:textSize="30dp"
             android:id="@+id/textView"
-            android:layout_below="@+id/imageButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="121dp" />
+            android:layout_alignBottom="@+id/editText2"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -47,7 +35,13 @@
             android:ems="10"
             android:id="@+id/editText2"
             android:hint="@string/param1"
-            android:layout_alignTop="@+id/textView"
+            android:singleLine="true"
+            android:background="@color/input"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:layout_marginLeft="20dp"
+            android:padding="10dp"
+            android:layout_marginTop="71dp"
+            android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/textView"
             android:layout_toStartOf="@+id/textView" />
 
@@ -57,11 +51,59 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/editText3"
+            android:textColorHint="@color/colorPrimaryDark"
             android:hint="@string/param2"
-            android:layout_alignBottom="@+id/editText2"
-            android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView" />
+            android:layout_marginRight="20dp"
+            android:singleLine="true"
+            android:background="@color/input"
+            android:padding="10dp"
+            android:layout_alignTop="@+id/editText2"
+            android:layout_toEndOf="@+id/textView"
+            android:layout_toRightOf="@+id/textView" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setTime"
+            android:id="@+id/buttonSetTime"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/colorBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:layout_marginTop="70dp"
+            android:layout_below="@+id/editText3"
+            android:layout_toEndOf="@+id/button"
+            android:layout_toRightOf="@+id/button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="wpisz wynik badania: (np. 120 / 80)"
+            android:id="@+id/textView2"
+            android:textSize="18dp"
+            android:padding="10dp"
+            android:layout_below="@+id/imageButton"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_above="@+id/editText3"
+            android:layout_alignRight="@+id/editText3"
+            android:layout_alignEnd="@+id/editText3"
+            android:layout_alignLeft="@+id/editText2"
+            android:layout_alignStart="@+id/editText2" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kliknij &quot;ustaw&quot; aby wybrać czas badania"
+            android:id="@+id/textView4"
+            android:textSize="18dp"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginLeft="20dp"
+            android:layout_alignTop="@+id/buttonSetTime"
+            android:layout_toLeftOf="@+id/buttonSetTime"
+            android:layout_toStartOf="@+id/buttonSetTime" />
 
     </RelativeLayout>
 </LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1"
+    android:background="@color/colorBackground">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorBackground"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="imię"
+        android:id="@+id/editTextUserFirstName"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input"
+        android:ems="10"
+        android:layout_margin="20dp">
+    </EditText>
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="nazwisko"
+        android:id="@+id/editTextUserLastName"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input"
+        android:ems="10"
+        android:layout_margin="20dp">
+    </EditText>
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="pesel"
+        android:id="@+id/editTextPesel"
+        android:inputType="numberDecimal"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:background="@color/input"
+        android:layout_margin="20dp"/>
+
+    <Button android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:id="@+id/buttonSave"
+        android:layout_margin="20dp"
+        android:text="@string/addData"
+        android:textColor="@color/colorWhite"
+        android:textSize="30dp"
+        android:background="@color/loginButtonColor"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

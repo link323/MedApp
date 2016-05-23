@@ -31,22 +31,24 @@ public class DataBaseAdapter {
         db.close();
     }
 
-    public void insertEntry(String userName, String password) {
+    public void insertEntryUsersTable(String userName, String password) {
         ContentValues newValues = new ContentValues();
-        // Assign values for each row.
         newValues.put(DataBaseHelper.USERNAME_COLUMN, userName);
         newValues.put(DataBaseHelper.PASSWORD_COLUMN, password);
-        //newValues.put(PESEL_COLUMN, pesel);
-        // Insert the row into your table
+
         db.insert(DataBaseHelper.USER_TABLE, null, newValues);
-        ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
+    }
+    public void insertEntryUsersDataTable(String firstName, String lastName, String pesel) {
+        ContentValues newValues = new ContentValues();
+        newValues.put(DataBaseHelper.FIRSTNAME_COLUMN, firstName);
+        newValues.put(DataBaseHelper.LASTNAME_COLUMN, lastName);
+        newValues.put(DataBaseHelper.PESEL_COLUMN, pesel);
+        db.insert(DataBaseHelper.USER_DATA_TABLE, null, newValues);
     }
 
     public int deleteEntry(String UserName) {
-        //String id=String.valueOf(ID);
         String where = "name=?";
         int numberOFEntriesDeleted = db.delete("users", where, new String[]{UserName});
-        // Toast.makeText(context, "Number fo Entry Deleted Successfully : "+numberOFEntriesDeleted, Toast.LENGTH_LONG).show();
         return numberOFEntriesDeleted;
     }
 

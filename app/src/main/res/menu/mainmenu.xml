@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="schemas.android.com/tools"
+    tools:context="com.example.pc.medproject.MenuTabsActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/refresh"
+        android:title="Refresh"/>
+    <item
+        android:id="@+id/action_settings"
+        android:title="dane użytkownika"
+        app:showAsAction="never"
+        >
+    </item>
+</menu>
