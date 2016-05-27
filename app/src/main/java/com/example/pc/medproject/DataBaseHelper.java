@@ -26,40 +26,37 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
 	public static final String RESULT_COLUMN = "result";
 	public static final String FOOD_COLUMN = "food";
-	public static final String SYSTOLIC_COLUMN = "result"; //skurczowe
-	public static final String DIASTOLIC_COLUMN = "result"; //rozkurczowe
+	public static final String SYSTOLIC_COLUMN = "result1"; //skurczowe
+	public static final String DIASTOLIC_COLUMN = "result2"; //rozkurczowe
 	public static final String DATE_COLUMN = "date";
 
 
 	static final String CREATE_USER_TABLE = "create table " + USER_TABLE + "( "
-			+ ID_COLUMN +" integer primary key autoincrement,"
+			+ ID_COLUMN + " integer primary key autoincrement,"
 			+ USERNAME_COLUMN + " text, "
-			+ PASSWORD_COLUMN+" text" +"); ";
+			+ PASSWORD_COLUMN + " text" + "); ";
 
 	static final String CREATE_USER_DATA_TABLE = "create table " + USER_DATA_TABLE + "( "
-			+ ID_COLUMN +" integer primary key, "
+			+ ID_COLUMN + " integer primary key, "
 			+ FIRSTNAME_COLUMN + " text, "
-			+ LASTNAME_COLUMN+" text,"
-			+ PESEL_COLUMN+ " text "+"); ";
+			+ LASTNAME_COLUMN + " text, "
+			+ PESEL_COLUMN + " text "+"); ";
 
 	static final String CREATE_RESULTS_TABLE_1 = "create table " + DIABETIC_RESULTS_TABLE + "( "
 			+ ID_COLUMN + " integer primary key, "
-			+ RESULT_COLUMN + " float "
-			+ DATE_COLUMN + " date "
-			+ FOOD_COLUMN + "boolean" +"); ";
+			+ RESULT_COLUMN + " int, "
+			+ DATE_COLUMN + " date, "
+			+ FOOD_COLUMN + " boolean" + "); ";
 
 	static final String CREATE_RESULTS_TABLE_2 = "create table " + BLOOD_PRESSURE_RESULTS_TABLE + "( "
-			+ ID_COLUMN +" integer primary key,"
-			+ SYSTOLIC_COLUMN + "int"
-			+ DIASTOLIC_COLUMN + " int "
+			+ ID_COLUMN + " integer primary key,"
+			+ SYSTOLIC_COLUMN + " int, "
+			+ DIASTOLIC_COLUMN + " int, "
 			+ DATE_COLUMN + " date " + "); ";
 
-	public DataBaseHelper(Context context, String name, CursorFactory factory, int version)
-    {
+	public DataBaseHelper(Context context, String name, CursorFactory factory, int version){
 	           super(context, name, factory, version);
 	}
-	// Called when no database exists in disk and the helper class needs
-	// to create a new one.
 
 	@Override
 	public void onOpen(SQLiteDatabase db) {

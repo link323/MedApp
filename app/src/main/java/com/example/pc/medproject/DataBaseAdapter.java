@@ -5,22 +5,24 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.Editable;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataBaseAdapter {
 
-
-    // Context of the application using the database.
     private final Context context;
-    // Variable to hold the database instance
     public SQLiteDatabase db;
-    // Database open/upgrade helper
     private DataBaseHelper dbHelper;
 
     public DataBaseAdapter(Context _context) {
         context = _context;
         dbHelper = new DataBaseHelper(context, DataBaseHelper.DATABASE_NAME, null, DataBaseHelper.DATABASE_VERSION);
     }
+
+
 
     public DataBaseAdapter open() throws SQLException {
         db = dbHelper.getWritableDatabase();
@@ -35,7 +37,6 @@ public class DataBaseAdapter {
         ContentValues newValues = new ContentValues();
         newValues.put(DataBaseHelper.USERNAME_COLUMN, userName);
         newValues.put(DataBaseHelper.PASSWORD_COLUMN, password);
-
         db.insert(DataBaseHelper.USER_TABLE, null, newValues);
     }
     public void insertEntryUsersDataTable(String firstName, String lastName, String pesel) {
@@ -54,8 +55,7 @@ public class DataBaseAdapter {
 
     public String getSinlgeEntry(String userName) {
         Cursor cursor = db.query(DataBaseHelper.USER_TABLE, null, " name=?", new String[]{userName}, null, null, null);
-        if (cursor.getCount() < 1) // UserName Not Exist
-        {
+        if (cursor.getCount() < 1){
             cursor.close();
             return "NOT EXIST";
         }
@@ -67,34 +67,45 @@ public class DataBaseAdapter {
     }
 
     public void updateEntry(String userName, String password) {
-        // Define the updated row content.
         ContentValues updatedValues = new ContentValues();
-        // Assign values for each row.
         updatedValues.put("name", userName);
         updatedValues.put("password", password);
         String where = "name=?";
         db.update(DataBaseHelper.USER_TABLE, updatedValues, where, new String[]{userName});
     }
 // dla cukrzycy
-    public void insertEntryToDiabeticTable(float result, String date, boolean beforeFood) {
+    public void insertEntryToDiabeticTable(int result, String date, boolean beforeFood) {
         ContentValues newValues = new ContentValues();
-        // Assign values for each row.
         newValues.put(DataBaseHelper.RESULT_COLUMN, result);
         newValues.put(DataBaseHelper.DATE_COLUMN, date);
         newValues.put(DataBaseHelper.FOOD_COLUMN, beforeFood);
-        // Insert the row into your table
         db.insert(DataBaseHelper.DIABETIC_RESULTS_TABLE, null, newValues);
-        ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
     }
 // dla ciśnienia
     public void insertEntryToBloodTable(int systolic, int diastolic, String date) {
         ContentValues newValues = new ContentValues();
-        // Assign values for each row.
         newValues.put(DataBaseHelper.SYSTOLIC_COLUMN, systolic);
         newValues.put(DataBaseHelper.DIASTOLIC_COLUMN, diastolic);
         newValues.put(DataBaseHelper.DATE_COLUMN, date);
-        // Insert the row into your table
         db.insert(DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE, null, newValues);
-        ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
+    }
+
+    public List<ResultsData> getAllContacts() {
+        List<ResultsData> resultsList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + DataBaseHelper.DIABETIC_RESULTS_TABLE;
+
+//        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                ResultsData data = new ResultsData(Integer.parseInt(cursor.getString(0)),cursor.getString(1),Boolean.parseBoolean(cursor.getString(2)));
+                Log.d("data from table ", cursor.getString(0) +" " + cursor.getString(1) + " " + cursor.getString(2));
+                resultsList.add(data);
+            } while (cursor.moveToNext());
+        }
+        return  resultsList;
     }
 }

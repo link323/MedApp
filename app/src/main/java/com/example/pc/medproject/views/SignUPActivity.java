@@ -28,7 +28,6 @@ public class SignUPActivity extends Activity {
         dataBaseAdapter = new DataBaseAdapter(this);
         dataBaseAdapter = dataBaseAdapter.open();
 
-        // Get Refferences of Views
         editTextUserName = (EditText) findViewById(R.id.editTextUserName);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword);
@@ -37,25 +36,18 @@ public class SignUPActivity extends Activity {
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-
                 String userName = editTextUserName.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String confirmPassword = editTextConfirmPassword.getText().toString();
-                Log.d("register",editTextPesel.getText().toString());
-                long pesel = Long.parseLong(editTextPesel.getText().toString());
 
-                // check if any of the fields are vaccant
                 if (userName.equals("") || password.equals("")|| confirmPassword.equals("")) {
                     Toast.makeText(getApplicationContext(), "Uzupełnij wszystkie pola", Toast.LENGTH_LONG).show();
                     return;
                 }
-                // check if both password matches
                 if (!password.equals(confirmPassword)) {
                     Toast.makeText(getApplicationContext(), "Podane hasła są od siebie różne", Toast.LENGTH_LONG).show();
                     return;
                 } else {
-                    // Save the Data in Database
                     dataBaseAdapter.insertEntryUsersTable(userName, password);
                     Toast.makeText(getApplicationContext(), "Gratulacje! Utworzono nowe konto", Toast.LENGTH_LONG).show();
                     Intent intentHome = new Intent(getApplicationContext(), HomeActivity.class);

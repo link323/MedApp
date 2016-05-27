@@ -18,7 +18,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.example.pc.medproject.DataBaseAdapter;
+import com.example.pc.medproject.DialogHelper;
 import com.example.pc.medproject.R;
 
 import java.util.ArrayList;
@@ -38,8 +41,9 @@ public class BloodPressureFragment extends Fragment{
     TextView t;
     Button buttonAdd;
     Button buttonSetTime;
-    ArrayList<String> time;
-
+    ArrayList<String> time = new ArrayList<>();
+    DataBaseAdapter db;
+    DialogHelper helper = new DialogHelper();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,9 @@ public class BloodPressureFragment extends Fragment{
         buttonAdd = (Button) view.findViewById(R.id.button);
         buttonSetTime = (Button) view.findViewById(R.id.buttonSetTime);
         t = (TextView) view.findViewById(R.id.textView);
+        time = helper.returnDefaultTime(time);
+        db = new DataBaseAdapter(getContext());
+        db = db.open();
 
         buttonSetTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -91,5 +98,17 @@ public class BloodPressureFragment extends Fragment{
 
     public void save(View v){
         Log.d("czas "+time.get(0), " ciśnienie "+ skurczowe.getText() + " " + rozkurczowe.getText());
+        if (skurczowe.getText().toString().equals("") || rozkurczowe.getText().toString().equals("") || skurczowe.getText().toString().equals(null) || rozkurczowe.getText().toString().equals(null)) {
+            Toast.makeText(v.getContext(), "Uzupełnij wszystkie pola!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if (Integer.parseInt(skurczowe.getText().toString()) < Integer.parseInt(rozkurczowe.getText().toString())) {
+            Toast.makeText(v.getContext(), "Wartości ciśnienia wpisane zostały w złej kolejności!", Toast.LENGTH_LONG).show();
+        }
+
+        else{
+            db.insertEntryToBloodTable(Integer.parseInt(skurczowe.getText().toString()), Integer.parseInt(rozkurczowe.getText().toString()), time.get(0));
+            Toast.makeText(v.getContext(), "Zapisano nowy wynik!", Toast.LENGTH_LONG).show();
+        }
     }
 }

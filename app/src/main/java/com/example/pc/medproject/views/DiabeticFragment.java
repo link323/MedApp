@@ -14,9 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pc.medproject.DataBaseAdapter;
+import com.example.pc.medproject.DialogHelper;
 import com.example.pc.medproject.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class DiabeticFragment extends Fragment{
@@ -26,12 +29,12 @@ public class DiabeticFragment extends Fragment{
     }
 
     EditText glucose;
-    TextView t;
-    CheckBox boxBefore;
-    CheckBox boxAfter;
-    Button buttonAdd;
-    Button buttonSetTime;
-    ArrayList<String> time;
+    CheckBox boxBefore, boxAfter;
+    Button buttonAdd, buttonSetTime;
+    ArrayList<String> time = new ArrayList<>();
+    DataBaseAdapter db;
+    DialogHelper helper = new DialogHelper();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +43,17 @@ public class DiabeticFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.diabetic_fragment, container, false);        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.diabetic_fragment, container, false);
 
         glucose = (EditText) view.findViewById(R.id.editText);
         buttonAdd = (Button) view.findViewById(R.id.button);
         buttonSetTime = (Button) view.findViewById(R.id.buttonSetTime);
         boxAfter = (CheckBox) view.findViewById(R.id.checkBox2);
         boxBefore = (CheckBox) view.findViewById(R.id.checkBox);
+        time = helper.returnDefaultTime(time);
+
+        db = new DataBaseAdapter(getContext());
+        db = db.open();
 
         buttonSetTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -62,8 +69,6 @@ public class DiabeticFragment extends Fragment{
 
         return view;
     }
-
-
 
     public void buttonClicked(View v) {
 
@@ -85,6 +90,21 @@ public class DiabeticFragment extends Fragment{
 
     public void save(View v){
         Log.d("czas " + time.get(0), " ciśnienie " + glucose.getText() + " " + boxAfter.isChecked() + " " + boxBefore.isChecked());
+        if (glucose.getText().toString().equals("") || glucose.getText().toString().equals(" ") || glucose.getText().toString().equals(null)) {
+            Toast.makeText(v.getContext(), "Uzupełnij wynik", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if (((boxAfter.isChecked() == false) && (boxBefore.isChecked() == false)) || ((boxAfter.isChecked() == true) && (boxBefore.isChecked() == true))) {
+            Toast.makeText(v.getContext(), "Wybierz jedną z opcji: PRZED albo PO POSIŁKU", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else{
+            if(boxBefore.isChecked() == true) {
+                db.insertEntryToDiabeticTable(Integer.parseInt(glucose.getText().toString()), time.get(0), true);
+            }else {
+                db.insertEntryToDiabeticTable(Integer.parseInt(glucose.getText().toString()), time.get(0), false);
+            }
+            Toast.makeText(v.getContext(), "Zapisano nowy wynik!", Toast.LENGTH_LONG).show();
+        }
     }
 }
-

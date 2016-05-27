@@ -19,16 +19,15 @@ import java.util.Calendar;
  * Created by PC on 22.05.2016.
  */
 public class TimeDialogFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-    final Calendar c = Calendar.getInstance();
-
+        final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
         return new TimePickerDialog(getActivity(), this, hour, minute, true);
     }
-
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -44,5 +43,4 @@ public class TimeDialogFragment extends DialogFragment implements TimePickerDial
         intent.putStringArrayListExtra("key_time", list);
         getTargetFragment().onActivityResult(getTargetRequestCode(),1,intent);
     }
-
 }
