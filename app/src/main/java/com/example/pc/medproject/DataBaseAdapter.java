@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.Editable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -21,8 +20,6 @@ public class DataBaseAdapter {
         context = _context;
         dbHelper = new DataBaseHelper(context, DataBaseHelper.DATABASE_NAME, null, DataBaseHelper.DATABASE_VERSION);
     }
-
-
 
     public DataBaseAdapter open() throws SQLException {
         db = dbHelper.getWritableDatabase();
@@ -90,18 +87,28 @@ public class DataBaseAdapter {
         db.insert(DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE, null, newValues);
     }
 
-    public List<ResultsData> getAllContacts() {
-        List<ResultsData> resultsList = new ArrayList<>();
-        // Select All Query
+    public List<ResultsDataDiabetic> getAllDiabeticResults() {
+        List<ResultsDataDiabetic> resultsList = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + DataBaseHelper.DIABETIC_RESULTS_TABLE;
-
-//        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                ResultsData data = new ResultsData(Integer.parseInt(cursor.getString(0)),cursor.getString(1),Boolean.parseBoolean(cursor.getString(2)));
+                ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(0)),cursor.getString(1),Boolean.parseBoolean(cursor.getString(2)));
+                Log.d("data from table ", cursor.getString(0) +" " + cursor.getString(1) + " " + cursor.getString(2));
+                resultsList.add(data);
+            } while (cursor.moveToNext());
+        }
+        return  resultsList;
+    }
+    public List<ResultsDataBloodPressure> getAllBloodPressureResults(){
+        List<ResultsDataBloodPressure> resultsList = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ResultsDataBloodPressure data = new ResultsDataBloodPressure(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), cursor.getString(2));
                 Log.d("data from table ", cursor.getString(0) +" " + cursor.getString(1) + " " + cursor.getString(2));
                 resultsList.add(data);
             } while (cursor.moveToNext());

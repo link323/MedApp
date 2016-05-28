@@ -6,12 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * Created by PC on 17.05.2016.
  */
-public class ResultsData {
+public class ResultsDataDiabetic {
 
     int result;
     String date;
     boolean beforeFood;
-    public ResultsData(int resultFromDB, String dateFromDB, boolean beforeFoodFromDB) {
+
+    public ResultsDataDiabetic(int resultFromDB, String dateFromDB, boolean beforeFoodFromDB) {
         result = resultFromDB;
         date = dateFromDB;
         beforeFood = beforeFoodFromDB;
