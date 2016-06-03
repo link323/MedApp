@@ -11,16 +11,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pc.medproject.DataBaseAdapter;
 import com.example.pc.medproject.DialogHelper;
+import com.example.pc.medproject.MySQLTask;
 import com.example.pc.medproject.R;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+import junit.framework.Assert;
 
+import java.util.ArrayList;
 
 public class DiabeticFragment extends Fragment{
 
@@ -34,6 +34,9 @@ public class DiabeticFragment extends Fragment{
     ArrayList<String> time = new ArrayList<>();
     DataBaseAdapter db;
     DialogHelper helper = new DialogHelper();
+
+    // url to create new product
+    private static String url_create_product = "http://api.androidhive.info/android_connect/create_product.php";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +108,7 @@ public class DiabeticFragment extends Fragment{
                 db.insertEntryToDiabeticTable(Integer.parseInt(glucose.getText().toString()), time.get(0), false);
             }
             Toast.makeText(v.getContext(), "Zapisano nowy wynik!", Toast.LENGTH_LONG).show();
-        }
+            MySQLTask mySQLTask = new MySQLTask(getContext(), "900923836291", glucose.getText().toString(), time.get(0), "true");
+            mySQLTask.execute("900923836291", glucose.getText().toString(), time.get(0), "true");        }
     }
 }
