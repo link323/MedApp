@@ -18,14 +18,14 @@ import java.net.URLEncoder;
 /**
  * Created by PC on 02.06.2016.
  */
-public class MySQLTask extends AsyncTask<String,String,String>{
+public class MySQLTaskDiabetic extends AsyncTask<String,String,String>{
     Context ctx;
     String pesel;
     String result;
     String time;
     String beforeFood;
 
-    public MySQLTask(Context ctx, String pesel, String result, String time, String beforeFood){
+    public MySQLTaskDiabetic(Context ctx, String pesel, String result, String time, String beforeFood){
         this.ctx = ctx;
         this.pesel = pesel;
         this.result = result;

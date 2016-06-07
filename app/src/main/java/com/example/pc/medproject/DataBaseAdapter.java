@@ -36,8 +36,9 @@ public class DataBaseAdapter {
         newValues.put(DataBaseHelper.PASSWORD_COLUMN, password);
         db.insert(DataBaseHelper.USER_TABLE, null, newValues);
     }
-    public void insertEntryUsersDataTable(String firstName, String lastName, String pesel) {
+    public void insertEntryUsersDataTable(String login, String firstName, String lastName, String pesel) {
         ContentValues newValues = new ContentValues();
+        newValues.put(DataBaseHelper.USERNAME_COLUMN, login);
         newValues.put(DataBaseHelper.FIRSTNAME_COLUMN, firstName);
         newValues.put(DataBaseHelper.LASTNAME_COLUMN, lastName);
         newValues.put(DataBaseHelper.PESEL_COLUMN, pesel);
@@ -71,16 +72,18 @@ public class DataBaseAdapter {
         db.update(DataBaseHelper.USER_TABLE, updatedValues, where, new String[]{userName});
     }
 // dla cukrzycy
-    public void insertEntryToDiabeticTable(int result, String date, boolean beforeFood) {
+    public void insertEntryToDiabeticTable(String pesel, int result, String date, boolean beforeFood) {
         ContentValues newValues = new ContentValues();
+        newValues.put(DataBaseHelper.PESEL_COLUMN, pesel);
         newValues.put(DataBaseHelper.RESULT_COLUMN, result);
         newValues.put(DataBaseHelper.DATE_COLUMN, date);
         newValues.put(DataBaseHelper.FOOD_COLUMN, beforeFood);
         db.insert(DataBaseHelper.DIABETIC_RESULTS_TABLE, null, newValues);
     }
 // dla ciśnienia
-    public void insertEntryToBloodTable(int systolic, int diastolic, String date) {
+    public void insertEntryToBloodTable(String pesel, int systolic, int diastolic, String date) {
         ContentValues newValues = new ContentValues();
+        newValues.put(DataBaseHelper.PESEL_COLUMN, pesel);
         newValues.put(DataBaseHelper.SYSTOLIC_COLUMN, systolic);
         newValues.put(DataBaseHelper.DIASTOLIC_COLUMN, diastolic);
         newValues.put(DataBaseHelper.DATE_COLUMN, date);

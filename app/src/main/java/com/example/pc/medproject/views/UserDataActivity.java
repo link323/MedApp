@@ -2,7 +2,9 @@ package com.example.pc.medproject.views;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,7 @@ public class UserDataActivity extends Activity {
 
     EditText editTextUserFirstName, editTextUserLastName, getEditTextPesel;
     Button btnSave;
+    SharedPreferences preferences;
 
     DataBaseAdapter dataBaseAdapter;
 
@@ -29,16 +32,17 @@ public class UserDataActivity extends Activity {
         dataBaseAdapter = new DataBaseAdapter(this);
         dataBaseAdapter = dataBaseAdapter.open();
 
-        // Get Refferences of Views
         editTextUserFirstName = (EditText) findViewById(R.id.editTextUserFirstName);
         editTextUserLastName = (EditText) findViewById(R.id.editTextUserLastName);
         getEditTextPesel = (EditText) findViewById(R.id.editTextPesel);
         btnSave = (Button) findViewById(R.id.buttonSave);
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         btnSave.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+                String login = preferences.getString("Name", "");
+                Log.d("login ", login);
 
                 String name = editTextUserFirstName.getText().toString();
                 String lastname = editTextUserLastName.getText().toString();
@@ -50,10 +54,13 @@ public class UserDataActivity extends Activity {
                     return;
                 }
                 else {
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("pesel",pesel);
+                    editor.apply();
                     // Save the Data in Database
-                    dataBaseAdapter.insertEntryUsersDataTable(name, lastname, pesel);
+                    dataBaseAdapter.insertEntryUsersDataTable(login, name, lastname, pesel);
                     Toast.makeText(getApplicationContext(), "Zapisano!", Toast.LENGTH_LONG).show();
-                    Intent intentHome = new Intent(getApplicationContext(), MenuTabsActivity.class);
+                    Intent intentHome = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intentHome);
                 }
             }
@@ -62,7 +69,6 @@ public class UserDataActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
         super.onDestroy();
 
         dataBaseAdapter.close();

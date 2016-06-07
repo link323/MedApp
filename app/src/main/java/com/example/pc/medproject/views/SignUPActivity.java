@@ -50,7 +50,7 @@ public class SignUPActivity extends Activity {
                 } else {
                     dataBaseAdapter.insertEntryUsersTable(userName, password);
                     Toast.makeText(getApplicationContext(), "Gratulacje! Utworzono nowe konto", Toast.LENGTH_LONG).show();
-                    Intent intentHome = new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent intentHome = new Intent(getApplicationContext(), UserDataActivity.class);
                     startActivity(intentHome);
                 }
             }

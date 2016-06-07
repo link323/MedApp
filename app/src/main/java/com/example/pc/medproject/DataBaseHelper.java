@@ -8,7 +8,6 @@ import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper
 {
-	//public static final int NAME_COLUMN = 1;
 	public static final String DATABASE_NAME = "MEDdatabase.db";
 	public static final int DATABASE_VERSION = 2;
 
@@ -38,12 +37,14 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
 	static final String CREATE_USER_DATA_TABLE = "create table " + USER_DATA_TABLE + "( "
 			+ ID_COLUMN + " integer primary key, "
+			+ USERNAME_COLUMN + " text, "
 			+ FIRSTNAME_COLUMN + " text, "
 			+ LASTNAME_COLUMN + " text, "
 			+ PESEL_COLUMN + " text "+"); ";
 
 	static final String CREATE_RESULTS_TABLE_1 = "create table " + DIABETIC_RESULTS_TABLE + "( "
 			+ ID_COLUMN + " integer primary key, "
+			+ PESEL_COLUMN + " text, "
 			+ RESULT_COLUMN + " int, "
 			+ DATE_COLUMN + " date, "
 			+ FOOD_COLUMN + " boolean" + "); ";

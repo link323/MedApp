@@ -1,7 +1,9 @@
 package com.example.pc.medproject.views;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -15,10 +17,9 @@ import android.widget.Toast;
 
 import com.example.pc.medproject.DataBaseAdapter;
 import com.example.pc.medproject.DialogHelper;
-import com.example.pc.medproject.MySQLTask;
+import com.example.pc.medproject.InputAnalyzer;
+import com.example.pc.medproject.MySQLTaskDiabetic;
 import com.example.pc.medproject.R;
-
-import junit.framework.Assert;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ public class DiabeticFragment extends Fragment{
     ArrayList<String> time = new ArrayList<>();
     DataBaseAdapter db;
     DialogHelper helper = new DialogHelper();
+    SharedPreferences preferences;
 
     // url to create new product
     private static String url_create_product = "http://api.androidhive.info/android_connect/create_product.php";
@@ -57,6 +59,8 @@ public class DiabeticFragment extends Fragment{
 
         db = new DataBaseAdapter(getContext());
         db = db.open();
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(view.getContext());
 
         buttonSetTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -92,6 +96,9 @@ public class DiabeticFragment extends Fragment{
     }
 
     public void save(View v){
+        String pesel = preferences.getString("pesel", "");
+        Log.d("pesel ", pesel);
+
         Log.d("czas " + time.get(0), " ciśnienie " + glucose.getText() + " " + boxAfter.isChecked() + " " + boxBefore.isChecked());
         if (glucose.getText().toString().equals("") || glucose.getText().toString().equals(" ") || glucose.getText().toString().equals(null)) {
             Toast.makeText(v.getContext(), "Uzupełnij wynik", Toast.LENGTH_LONG).show();
@@ -102,13 +109,14 @@ public class DiabeticFragment extends Fragment{
             return;
         }
         else{
-            if(boxBefore.isChecked() == true) {
-                db.insertEntryToDiabeticTable(Integer.parseInt(glucose.getText().toString()), time.get(0), true);
-            }else {
-                db.insertEntryToDiabeticTable(Integer.parseInt(glucose.getText().toString()), time.get(0), false);
+            InputAnalyzer analyzer = new InputAnalyzer(Integer.parseInt(glucose.getText().toString()), boxBefore.isChecked());
+            if(analyzer.checkDiabeticInput(v.getContext()) && boxBefore.isChecked() == true) {
+                db.insertEntryToDiabeticTable(pesel, Integer.parseInt(glucose.getText().toString()), time.get(0), true);
+            }else if(analyzer.checkDiabeticInput(v.getContext()) && boxBefore.isChecked() == false){
+                db.insertEntryToDiabeticTable(pesel, Integer.parseInt(glucose.getText().toString()), time.get(0), false);
             }
             Toast.makeText(v.getContext(), "Zapisano nowy wynik!", Toast.LENGTH_LONG).show();
-            MySQLTask mySQLTask = new MySQLTask(getContext(), "900923836291", glucose.getText().toString(), time.get(0), "true");
-            mySQLTask.execute("900923836291", glucose.getText().toString(), time.get(0), "true");        }
+            MySQLTaskDiabetic mySQLTaskDiabetic = new MySQLTaskDiabetic(getContext(), pesel, glucose.getText().toString(), time.get(0), "true");
+            mySQLTaskDiabetic.execute(pesel, glucose.getText().toString(), time.get(0), "true");        }
     }
 }
