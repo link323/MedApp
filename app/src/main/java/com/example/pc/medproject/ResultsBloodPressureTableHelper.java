@@ -62,9 +62,9 @@ public class ResultsBloodPressureTableHelper {
         List<ResultsDataBloodPressure> lista = db.getAllBloodPressureResults();
 
         for(int i=0; i<lista.size(); i++){
-            String date = lista.get(0).getDate();
-            String result1 = String.valueOf(lista.get(0).getResult1());
-            String result2 = String.valueOf(lista.get(0).getResult2());
+            String date = lista.get(i).getDate();
+            String result1 = String.valueOf(lista.get(i).getResult1());
+            String result2 = String.valueOf(lista.get(i).getResult2());
 
             TableRow tr = new TableRow(context);
             if(i%2!=0) tr.setBackgroundColor(Color.GRAY);

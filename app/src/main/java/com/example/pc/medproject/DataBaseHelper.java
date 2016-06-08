@@ -46,14 +46,15 @@ public class DataBaseHelper extends SQLiteOpenHelper
 			+ ID_COLUMN + " integer primary key, "
 			+ PESEL_COLUMN + " text, "
 			+ RESULT_COLUMN + " int, "
-			+ DATE_COLUMN + " date, "
+			+ DATE_COLUMN + " datetime, "
 			+ FOOD_COLUMN + " boolean" + "); ";
 
 	static final String CREATE_RESULTS_TABLE_2 = "create table " + BLOOD_PRESSURE_RESULTS_TABLE + "( "
 			+ ID_COLUMN + " integer primary key,"
+			+ PESEL_COLUMN + " text, "
 			+ SYSTOLIC_COLUMN + " int, "
 			+ DIASTOLIC_COLUMN + " int, "
-			+ DATE_COLUMN + " date " + "); ";
+			+ DATE_COLUMN + " datetime " + "); ";
 
 	public DataBaseHelper(Context context, String name, CursorFactory factory, int version){
 	           super(context, name, factory, version);

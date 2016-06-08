@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
+import android.util.Log;
 import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
@@ -35,8 +36,10 @@ public class TimeDialogFragment extends DialogFragment implements TimePickerDial
 
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
         c.set(Calendar.MINUTE, minute);
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
+        Log.d("data ", String.valueOf(c.get(Calendar.DATE)));
+        SimpleDateFormat timeFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String time = timeFormatter.format(c.getTime());
+        Log.d("datetime ", time);
         ArrayList<String> list = new ArrayList<>();
         list.add(time);
         Intent intent = new Intent();

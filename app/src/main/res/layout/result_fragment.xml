@@ -25,6 +25,23 @@
             android:id="@+id/radioButtonDiabetic"
             android:layout_alignTop="@+id/radioButtonBlood"
             android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ciśnienie krwi wykres"
+            android:id="@+id/radioButtonBloodDiagram"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:layout_column="9" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cukier wykres"
+            android:id="@+id/radioButtonDiabeticDiagram"
+            android:layout_alignTop="@+id/radioButtonBlood"
+            android:checked="false" />
     </RadioGroup>
     <ScrollView
         android:layout_width="wrap_content"
@@ -45,40 +62,3 @@
         </TableLayout>
     </ScrollView>
 </RelativeLayout>
-<!--
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/radioButtonDiabetic"
-        android:id="@+id/scrollView">
-        <TableLayout
-            android:id="@+id/header_table"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:stretchColumns="*">
-        </TableLayout>
-    </ScrollView>
-<ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableLayout
-            android:id="@+id/content_table"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:stretchColumns="*">
-        </TableLayout>
-
-    </ScrollView>
-
-
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:layout_column="23"
-        android:src="@drawable/refresh"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />-->

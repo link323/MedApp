@@ -97,8 +97,8 @@ public class DataBaseAdapter {
 
         if (cursor.moveToFirst()) {
             do {
-                ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(0)),cursor.getString(1),Boolean.parseBoolean(cursor.getString(2)));
-                Log.d("data from table ", cursor.getString(0) +" " + cursor.getString(1) + " " + cursor.getString(2));
+                Log.d("data from table ", cursor.getString(0) +" " +cursor.getString(1) +" " + cursor.getString(2) + " " + cursor.getString(3)+ " " + cursor.getString(4));
+                ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(2)),cursor.getString(3),Boolean.parseBoolean(cursor.getString(4)));
                 resultsList.add(data);
             } while (cursor.moveToNext());
         }
@@ -111,8 +111,8 @@ public class DataBaseAdapter {
 
         if (cursor.moveToFirst()) {
             do {
-                ResultsDataBloodPressure data = new ResultsDataBloodPressure(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), cursor.getString(2));
-                Log.d("data from table ", cursor.getString(0) +" " + cursor.getString(1) + " " + cursor.getString(2));
+                Log.d("data from table ", cursor.getString(0) +" " +cursor.getString(1) +" " + cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4));
+                ResultsDataBloodPressure data = new ResultsDataBloodPressure(Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
                 resultsList.add(data);
             } while (cursor.moveToNext());
         }

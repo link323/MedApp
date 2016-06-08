@@ -62,9 +62,9 @@ public class ResultsDiabeticTableHelper {
         List<ResultsDataDiabetic> lista = db.getAllDiabeticResults();
 
         for(int i=0; i<lista.size(); i++){
-            String date = lista.get(0).getDate();
-            String result = String.valueOf(lista.get(0).getResult());
-            String state = String.valueOf(lista.get(0).getBeforeFood());
+            String date = lista.get(i).getDate();
+            String result = String.valueOf(lista.get(i).getResult());
+            String state = String.valueOf(lista.get(i).getBeforeFood());
 
             TableRow tr = new TableRow(context);
             if(i%2!=0) tr.setBackgroundColor(Color.GRAY);
