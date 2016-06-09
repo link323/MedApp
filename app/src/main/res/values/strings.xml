@@ -21,8 +21,8 @@
     <string name="diabetic">poziom cukru</string>
     <string name="bloodPresure">ciśnienie krwi</string>
     <string name="add">dodaj</string>
-    <string name="param1">ciśnienie skurczowe</string>
-    <string name="param2">ciśnienie rozkurczowe</string>
+    <string name="param1">skurczowe</string>
+    <string name="param2">rozkurczowe</string>
     <string name="results">twoje wyniki</string>
     <string name="addData">zapisz</string>
     <string name="setTime">ustaw</string>

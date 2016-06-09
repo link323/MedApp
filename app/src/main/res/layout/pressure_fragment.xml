@@ -2,7 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/windowBackground">
+    android:background="@color/windowBackground"
+    android:weightSum="1">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2"
+        android:layout_weight="1.15"></ScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,9 +21,9 @@
             android:id="@+id/button"
             android:background="@color/colorText2"
             android:textSize="30dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="139dp" />
+            android:layout_marginTop="54dp"
+            android:layout_below="@+id/editText4"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,15 +72,13 @@
             android:layout_height="wrap_content"
             android:text="@string/setTime"
             android:id="@+id/buttonSetTime"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
             android:background="@color/colorBackground"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20dp"
-            android:layout_marginTop="70dp"
             android:layout_below="@+id/editText3"
-            android:layout_toEndOf="@+id/button"
-            android:layout_toRightOf="@+id/button" />
+            android:layout_alignRight="@+id/editText3"
+            android:layout_alignEnd="@+id/editText3"
+            android:layout_marginTop="48dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +87,6 @@
             android:id="@+id/textView2"
             android:textSize="18dp"
             android:padding="10dp"
-            android:layout_below="@+id/imageButton"
             android:textColor="@color/colorPrimaryDark"
             android:layout_above="@+id/editText3"
             android:layout_alignRight="@+id/editText3"
@@ -100,10 +103,37 @@
             android:textSize="18dp"
             android:padding="10dp"
             android:textColor="@color/colorPrimaryDark"
-            android:layout_marginLeft="20dp"
-            android:layout_alignTop="@+id/buttonSetTime"
+            android:layout_alignBaseline="@+id/buttonSetTime"
+            android:layout_alignBottom="@+id/buttonSetTime"
             android:layout_toLeftOf="@+id/buttonSetTime"
-            android:layout_toStartOf="@+id/buttonSetTime" />
+            android:layout_alignLeft="@+id/editText2"
+            android:layout_alignStart="@+id/editText2" />
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText4"
+            android:background="@color/input"
+            android:padding="10dp"
+            android:hint="tu wprowadź uwagi"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:singleLine="true"
+            android:layout_below="@+id/textViewComment"
+            android:layout_alignLeft="@+id/textViewComment"
+            android:layout_alignStart="@+id/textViewComment"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="uwagi:"
+            android:id="@+id/textViewComment"
+            android:textSize="18dp"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4" />
     </RelativeLayout>
 </LinearLayout>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.pc.medproject.DataBaseAdapter;
 import com.example.pc.medproject.DialogHelper;
 import com.example.pc.medproject.InputAnalyzer;
+import com.example.pc.medproject.MySQLTaskPressure;
 import com.example.pc.medproject.R;
 import java.util.ArrayList;
 
@@ -28,11 +29,9 @@ public class BloodPressureFragment extends Fragment{
     public BloodPressureFragment() {
         // Required empty public constructor
     }
-    EditText skurczowe;
-    EditText rozkurczowe;
+    EditText skurczowe, rozkurczowe, comment;
     TextView t;
-    Button buttonAdd;
-    Button buttonSetTime;
+    Button buttonAdd, buttonSetTime;
     ArrayList<String> time = new ArrayList<>();
     DataBaseAdapter db;
     DialogHelper helper = new DialogHelper();
@@ -49,9 +48,9 @@ public class BloodPressureFragment extends Fragment{
         View view = inflater.inflate(R.layout.pressure_fragment, container, false);
         skurczowe = (EditText) view.findViewById(R.id.editText2);
         rozkurczowe = (EditText) view.findViewById(R.id.editText3);
+        comment = (EditText) view.findViewById(R.id.editText4);
         buttonAdd = (Button) view.findViewById(R.id.button);
         buttonSetTime = (Button) view.findViewById(R.id.buttonSetTime);
-        t = (TextView) view.findViewById(R.id.textView);
         time = helper.returnDefaultTime(time);
         db = new DataBaseAdapter(getContext());
         db = db.open();
@@ -107,8 +106,15 @@ public class BloodPressureFragment extends Fragment{
         else{
             InputAnalyzer analyzer = new InputAnalyzer(Integer.parseInt(skurczowe.getText().toString()), Integer.parseInt(rozkurczowe.getText().toString()));
             if(analyzer.checkPressureInput(v.getContext())){
-                db.insertEntryToBloodTable(pesel, Integer.parseInt(skurczowe.getText().toString()), Integer.parseInt(rozkurczowe.getText().toString()), time.get(0));
+                db.insertEntryToBloodTable(pesel, Integer.parseInt(skurczowe.getText().toString()), Integer.parseInt(rozkurczowe.getText().toString()), time.get(0), comment.getText().toString());
                 Toast.makeText(v.getContext(), "Zapisano nowy wynik!", Toast.LENGTH_LONG).show();
+                try{
+                    MySQLTaskPressure mySQLTaskPressure = new MySQLTaskPressure(getContext(), pesel, skurczowe.getText().toString(), rozkurczowe.getText().toString(),  time.get(0), comment.getText().toString());
+                    mySQLTaskPressure.execute(pesel, pesel, skurczowe.getText().toString(), rozkurczowe.getText().toString(),  time.get(0), comment.getText().toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(v.getContext(), "Nie można się połączyć z serwerem!", Toast.LENGTH_LONG).show();
+                }
             }
         }
     }

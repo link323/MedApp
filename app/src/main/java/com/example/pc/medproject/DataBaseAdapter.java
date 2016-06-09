@@ -72,21 +72,23 @@ public class DataBaseAdapter {
         db.update(DataBaseHelper.USER_TABLE, updatedValues, where, new String[]{userName});
     }
 // dla cukrzycy
-    public void insertEntryToDiabeticTable(String pesel, int result, String date, boolean beforeFood) {
+    public void insertEntryToDiabeticTable(String pesel, int result, String date, boolean beforeFood, String comment) {
         ContentValues newValues = new ContentValues();
         newValues.put(DataBaseHelper.PESEL_COLUMN, pesel);
         newValues.put(DataBaseHelper.RESULT_COLUMN, result);
         newValues.put(DataBaseHelper.DATE_COLUMN, date);
         newValues.put(DataBaseHelper.FOOD_COLUMN, beforeFood);
+        newValues.put(DataBaseHelper.COMMENT_COLUMN, comment);
         db.insert(DataBaseHelper.DIABETIC_RESULTS_TABLE, null, newValues);
     }
 // dla ciśnienia
-    public void insertEntryToBloodTable(String pesel, int systolic, int diastolic, String date) {
+    public void insertEntryToBloodTable(String pesel, int systolic, int diastolic, String date, String comment) {
         ContentValues newValues = new ContentValues();
         newValues.put(DataBaseHelper.PESEL_COLUMN, pesel);
         newValues.put(DataBaseHelper.SYSTOLIC_COLUMN, systolic);
         newValues.put(DataBaseHelper.DIASTOLIC_COLUMN, diastolic);
         newValues.put(DataBaseHelper.DATE_COLUMN, date);
+        newValues.put(DataBaseHelper.COMMENT_COLUMN, comment);
         db.insert(DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE, null, newValues);
     }
 
@@ -97,7 +99,7 @@ public class DataBaseAdapter {
 
         if (cursor.moveToFirst()) {
             do {
-                Log.d("data from table ", cursor.getString(0) +" " +cursor.getString(1) +" " + cursor.getString(2) + " " + cursor.getString(3)+ " " + cursor.getString(4));
+                Log.d("data from table ", cursor.getString(0)+" "+cursor.getString(1)+" " +cursor.getString(2)+" "+cursor.getString(3)+" "+cursor.getString(4)+" "+cursor.getString(5));
                 ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(2)),cursor.getString(3),Boolean.parseBoolean(cursor.getString(4)));
                 resultsList.add(data);
             } while (cursor.moveToNext());

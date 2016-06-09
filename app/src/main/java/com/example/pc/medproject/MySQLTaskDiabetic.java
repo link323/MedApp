@@ -24,13 +24,15 @@ public class MySQLTaskDiabetic extends AsyncTask<String,String,String>{
     String result;
     String time;
     String beforeFood;
+    String comment;
 
-    public MySQLTaskDiabetic(Context ctx, String pesel, String result, String time, String beforeFood){
+    public MySQLTaskDiabetic(Context ctx, String pesel, String result, String time, String beforeFood, String comment){
         this.ctx = ctx;
         this.pesel = pesel;
         this.result = result;
         this.time = time;
         this.beforeFood = beforeFood;
+        this.comment = comment;
     }
 
     @Override
@@ -45,7 +47,7 @@ public class MySQLTaskDiabetic extends AsyncTask<String,String,String>{
         StrictMode.setThreadPolicy(policy);
 
 //        String url_create_product = "http://10.0.2.2:80/android_connect/create_product.php";
-        String url_create_product = "http://192.168.0.11/android-connector/create_product.php";
+        String url_create_product = "http://192.168.0.11/android-connector/create_product_diabetic.php";
         try{
             URL url = new URL(url_create_product);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -56,8 +58,9 @@ public class MySQLTaskDiabetic extends AsyncTask<String,String,String>{
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
             String data = URLEncoder.encode("pesel", "UTF-8") + "=" +URLEncoder.encode(pesel, "UTF-8")+" & "+
                     URLEncoder.encode("result", "UTF-8") + "=" +URLEncoder.encode(String.valueOf(result), "UTF-8")+" & "+
-                    URLEncoder.encode("time", "UTF-8") + "=" +URLEncoder.encode(time, "UTF-8")+" & "+
-                    URLEncoder.encode("before_food", "UTF-8") + "=" +URLEncoder.encode(String.valueOf(beforeFood), "UTF-8");
+                    URLEncoder.encode("date_time", "UTF-8") + "=" +URLEncoder.encode(time, "UTF-8")+" & "+
+                    URLEncoder.encode("before_food", "UTF-8") + "=" +URLEncoder.encode(String.valueOf(beforeFood), "UTF-8")+" & "+
+                    URLEncoder.encode("comment", "UTF-8") + "=" +URLEncoder.encode(comment, "UTF-8");
             bufferedWriter.write(data);
             bufferedWriter.flush();
             bufferedWriter.close();

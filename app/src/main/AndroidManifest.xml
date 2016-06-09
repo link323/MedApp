@@ -33,6 +33,8 @@
             android:name=".views.UserDataActivity"/>
         <activity
             android:name=".views.MenuTabsActivity"/>
+        <activity
+            android:name=".views.DiabeticDiagramActivity"/>
     </application>
 
 </manifest>

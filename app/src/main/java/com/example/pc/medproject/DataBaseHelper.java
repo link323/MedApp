@@ -28,6 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 	public static final String SYSTOLIC_COLUMN = "result1"; //skurczowe
 	public static final String DIASTOLIC_COLUMN = "result2"; //rozkurczowe
 	public static final String DATE_COLUMN = "date";
+	public static final String COMMENT_COLUMN = "comment";
 
 
 	static final String CREATE_USER_TABLE = "create table " + USER_TABLE + "( "
@@ -47,14 +48,16 @@ public class DataBaseHelper extends SQLiteOpenHelper
 			+ PESEL_COLUMN + " text, "
 			+ RESULT_COLUMN + " int, "
 			+ DATE_COLUMN + " datetime, "
-			+ FOOD_COLUMN + " boolean" + "); ";
+			+ FOOD_COLUMN + " boolean, "
+			+ COMMENT_COLUMN + " text" + "); ";
 
 	static final String CREATE_RESULTS_TABLE_2 = "create table " + BLOOD_PRESSURE_RESULTS_TABLE + "( "
 			+ ID_COLUMN + " integer primary key,"
 			+ PESEL_COLUMN + " text, "
 			+ SYSTOLIC_COLUMN + " int, "
 			+ DIASTOLIC_COLUMN + " int, "
-			+ DATE_COLUMN + " datetime " + "); ";
+			+ DATE_COLUMN + " datetime, "
+			+ COMMENT_COLUMN + " text" + "); ";
 
 	public DataBaseHelper(Context context, String name, CursorFactory factory, int version){
 	           super(context, name, factory, version);

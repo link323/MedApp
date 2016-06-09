@@ -21,19 +21,6 @@
 
     <EditText android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:hint="pesel"
-        android:inputType="numberDecimal"
-        android:id="@+id/editTextPesel"
-        android:layout_gravity="center_horizontal"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:background="@color/input"
-        android:ems="10"
-        android:layout_margin="20dp">
-    </EditText>
-
-    <EditText android:layout_height="wrap_content"
-        android:layout_width="match_parent"
         android:hint="hasło"
         android:id="@+id/editTextPassword"
         android:inputType="textPassword"

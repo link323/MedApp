@@ -21,6 +21,9 @@ import com.example.pc.medproject.InputAnalyzer;
 import com.example.pc.medproject.MySQLTaskDiabetic;
 import com.example.pc.medproject.R;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 public class DiabeticFragment extends Fragment{
@@ -29,7 +32,7 @@ public class DiabeticFragment extends Fragment{
         // Required empty public constructor
     }
 
-    EditText glucose;
+    EditText glucose, comment;
     CheckBox boxBefore, boxAfter;
     Button buttonAdd, buttonSetTime;
     ArrayList<String> time = new ArrayList<>();
@@ -51,6 +54,7 @@ public class DiabeticFragment extends Fragment{
         View view = inflater.inflate(R.layout.diabetic_fragment, container, false);
 
         glucose = (EditText) view.findViewById(R.id.editText);
+        comment = (EditText) view.findViewById(R.id.editText4);
         buttonAdd = (Button) view.findViewById(R.id.button);
         buttonSetTime = (Button) view.findViewById(R.id.buttonSetTime);
         boxAfter = (CheckBox) view.findViewById(R.id.checkBox2);
@@ -99,7 +103,7 @@ public class DiabeticFragment extends Fragment{
         String pesel = preferences.getString("pesel", "");
         Log.d("pesel ", pesel);
 
-        Log.d("czas " + time.get(0), " ciśnienie " + glucose.getText() + " " + boxAfter.isChecked() + " " + boxBefore.isChecked());
+        Log.d("czas " + time.get(0), " ciśnienie " + glucose.getText() + " " + boxAfter.isChecked() + " " + boxBefore.isChecked() + " "+ comment.getText().toString());
         if (glucose.getText().toString().equals("") || glucose.getText().toString().equals(" ") || glucose.getText().toString().equals(null)) {
             Toast.makeText(v.getContext(), "Uzupełnij wynik", Toast.LENGTH_LONG).show();
             return;
@@ -111,12 +115,18 @@ public class DiabeticFragment extends Fragment{
         else{
             InputAnalyzer analyzer = new InputAnalyzer(Integer.parseInt(glucose.getText().toString()), boxBefore.isChecked());
             if(analyzer.checkDiabeticInput(v.getContext()) && boxBefore.isChecked() == true) {
-                db.insertEntryToDiabeticTable(pesel, Integer.parseInt(glucose.getText().toString()), time.get(0), true);
+                db.insertEntryToDiabeticTable(pesel, Integer.parseInt(glucose.getText().toString()), time.get(0), true, comment.getText().toString());
             }else if(analyzer.checkDiabeticInput(v.getContext()) && boxBefore.isChecked() == false){
-                db.insertEntryToDiabeticTable(pesel, Integer.parseInt(glucose.getText().toString()), time.get(0), false);
+                db.insertEntryToDiabeticTable(pesel, Integer.parseInt(glucose.getText().toString()), time.get(0), false, comment.getText().toString());
             }
             Toast.makeText(v.getContext(), "Zapisano nowy wynik!", Toast.LENGTH_LONG).show();
-            MySQLTaskDiabetic mySQLTaskDiabetic = new MySQLTaskDiabetic(getContext(), pesel, glucose.getText().toString(), time.get(0), "true");
-            mySQLTaskDiabetic.execute(pesel, glucose.getText().toString(), time.get(0), "true");        }
+            try {
+                MySQLTaskDiabetic mySQLTaskDiabetic = new MySQLTaskDiabetic(getContext(), pesel, glucose.getText().toString(), time.get(0), "true", comment.getText().toString());
+                mySQLTaskDiabetic.execute(pesel, glucose.getText().toString(), time.get(0), "true", comment.getText().toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(v.getContext(), "Nie można się połączyć z serwerem!", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.pc.medproject.views;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,11 +9,9 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableLayout;
-import android.widget.Toast;
 
 import com.example.pc.medproject.R;
 import com.example.pc.medproject.ResultsBloodPressureTableHelper;
-import com.example.pc.medproject.ResultsDataBloodPressure;
 import com.example.pc.medproject.ResultsDiabeticTableHelper;
 
 /**
@@ -51,6 +50,20 @@ public class ResultsFragment extends Fragment{
                         ResultsBloodPressureTableHelper helper = new ResultsBloodPressureTableHelper(tableLayout, getContext());
                         helper.addHeaders();
                         helper.addData();
+                    }
+                    else if(checkedId == R.id.radioButtonDiagramBlood){
+                        tableLayout.removeAllViews();
+                        Intent intentDiagram=new Intent(view.getContext(),DiabeticDiagramActivity.class);
+                        startActivity(intentDiagram);
+//                        BarChart barChart = new BarChart(getContext());
+//                        DiagramPressure diagram = new DiagramPressure(barChart);
+                    }
+                    else if(checkedId == R.id.radioButtonDiagramDiabetic){
+                        tableLayout.removeAllViews();
+                        Intent intentDiagram=new Intent(view.getContext(),DiabeticDiagramActivity.class);
+                        startActivity(intentDiagram);
+//                        BarChart barChart = new BarChart(getContext());
+//                        DiagramDiabetic diagram = new DiagramDiabetic();
                     }
                 }
 
