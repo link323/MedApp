@@ -3,6 +3,7 @@ package com.example.pc.medproject;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -59,7 +60,10 @@ public class ResultsDiabeticTableHelper {
         Integer count=0;
         DataBaseAdapter db = new DataBaseAdapter(context);
         db = db.open();
-        List<ResultsDataDiabetic> lista = db.getAllDiabeticResults();
+        DateTime dateTime = new DateTime();
+        List<ResultsDataDiabetic> lista = db.getAllDiabeticResults(dateTime.findLastMonthDate(), dateTime.findActualDate());
+
+        db.getAllDiabeticResultsTest();
 
         for(int i=0; i<lista.size(); i++){
             String date = lista.get(i).getDate();
@@ -76,13 +80,19 @@ public class ResultsDiabeticTableHelper {
             labelDATE.setId(200 + count);
             labelDATE.setText(date);
             labelDATE.setPadding(2, 0, 5, 0);
-            labelDATE.setTextColor(Color.RED);
+            labelDATE.setTextColor(Color.WHITE);
             tr.addView(labelDATE);
 
             TextView labelRESULTS = new TextView(context);
             labelRESULTS.setText(result);
+            if(Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>100)){
+                labelRESULTS.setTextColor(Color.RED);
+            } else if(!Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>140)){
+                labelRESULTS.setTextColor(Color.RED);
+            } else {
+                labelRESULTS.setTextColor(Color.GREEN);
+            }
             labelRESULTS.setId(200 + count);
-            labelRESULTS.setTextColor(Color.RED);
             tr.addView(labelRESULTS);
 
             TextView labelBEFORE = new TextView(context);

@@ -35,6 +35,8 @@
             android:name=".views.MenuTabsActivity"/>
         <activity
             android:name=".views.DiabeticDiagramActivity"/>
+        <activity
+            android:name=".views.PressureDiagramActivity"/>
     </application>
 
 </manifest>

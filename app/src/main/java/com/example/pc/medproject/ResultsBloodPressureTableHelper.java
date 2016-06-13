@@ -59,7 +59,11 @@ public class ResultsBloodPressureTableHelper {
         Integer count=0;
         DataBaseAdapter db = new DataBaseAdapter(context);
         db = db.open();
-        List<ResultsDataBloodPressure> lista = db.getAllBloodPressureResults();
+        DateTime datetime = new DateTime();
+
+        List<ResultsDataBloodPressure> lista = db.getAllBloodPressureResults(datetime.findLastMonthDate(), datetime.findActualDate());
+
+        db.getAllBloodPressureResultsTest();
 
         for(int i=0; i<lista.size(); i++){
             String date = lista.get(i).getDate();
@@ -76,18 +80,26 @@ public class ResultsBloodPressureTableHelper {
             labelDATE.setId(200 + count);
             labelDATE.setText(date);
             labelDATE.setPadding(2, 0, 5, 0);
-            labelDATE.setTextColor(Color.RED);
+            labelDATE.setTextColor(Color.WHITE);
             tr.addView(labelDATE);
 
             TextView labelRESULTS = new TextView(context);
             labelRESULTS.setText(result1);
             labelRESULTS.setId(200 + count);
-            labelRESULTS.setTextColor(Color.RED);
+            if(Integer.parseInt(result1)<140 || Integer.parseInt(result2)<90){
+                labelRESULTS.setTextColor(Color.GREEN);
+            }else {
+                labelRESULTS.setTextColor(Color.RED);
+            }
             tr.addView(labelRESULTS);
 
             TextView labelBEFORE = new TextView(context);
             labelBEFORE.setText(result2);
-            labelBEFORE.setTextColor(Color.RED);
+            if(Integer.parseInt(result1)<140 || Integer.parseInt(result2)<90){
+                labelBEFORE.setTextColor(Color.GREEN);
+            }else {
+                labelBEFORE.setTextColor(Color.RED);
+            }
             labelBEFORE.setId(200 + count);
             tr.addView(labelBEFORE);
 

@@ -8,133 +8,134 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView2"
-        android:layout_weight="1.41"></ScrollView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_weight="1.41">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="wpisz wynik badania:"
-            android:id="@+id/textView2"
-            android:textSize="18dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:padding="10dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.41">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/editText"
-            android:hint="tu wprowadź wynik"
-            android:background="@color/input"
-            android:padding="10dp"
-            android:textColorHint="@color/colorPrimaryDark"
-            android:singleLine="true"
-            android:layout_below="@+id/textView2"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_alignRight="@+id/buttonSetTime"
-            android:layout_alignEnd="@+id/buttonSetTime" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="wpisz wynik badania:"
+                android:id="@+id/textView2"
+                android:textSize="18dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add"
-            android:id="@+id/button"
-            android:background="@color/colorText1"
-            android:textSize="30dp"
-            android:layout_below="@+id/editText4"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="45dp" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:hint="tu wprowadź wynik"
+                android:background="@color/input"
+                android:padding="10dp"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:singleLine="true"
+                android:layout_below="@+id/textView2"
+                android:layout_alignLeft="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_alignRight="@+id/buttonSetTime"
+                android:layout_alignEnd="@+id/buttonSetTime" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/setTime"
-            android:id="@+id/buttonSetTime"
-            android:background="@color/colorBackground"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginRight="20dp"
-            android:textSize="20dp"
-            android:layout_alignTop="@+id/textView4"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add"
+                android:id="@+id/button"
+                android:background="@color/colorText1"
+                android:textSize="30dp"
+                android:layout_below="@+id/editText4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="45dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="kliknij &quot;ustaw&quot; aby wybrać czas badania"
-            android:id="@+id/textView4"
-            android:textSize="18dp"
-            android:padding="10dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="32dp"
-            android:layout_below="@+id/editText"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_toLeftOf="@+id/buttonSetTime"
-            android:layout_toStartOf="@+id/buttonSetTime" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setTime"
+                android:id="@+id/buttonSetTime"
+                android:background="@color/colorBackground"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
+                android:layout_alignTop="@+id/textView4"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="przed posiłkiem"
-            android:id="@+id/checkBox"
-            android:checked="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_below="@+id/textView4"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_alignStart="@+id/textView4" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kliknij &quot;ustaw&quot; aby wybrać czas badania"
+                android:id="@+id/textView4"
+                android:textSize="18dp"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="32dp"
+                android:layout_below="@+id/editText"
+                android:layout_alignLeft="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_toLeftOf="@+id/buttonSetTime"
+                android:layout_toStartOf="@+id/buttonSetTime" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="po posiłku"
-            android:id="@+id/checkBox2"
-            android:layout_below="@+id/checkBox"
-            android:layout_alignRight="@+id/checkBox"
-            android:layout_alignEnd="@+id/checkBox"
-            android:checked="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_alignLeft="@+id/checkBox"
-            android:layout_alignStart="@+id/checkBox" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="przed posiłkiem"
+                android:id="@+id/checkBox"
+                android:checked="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_below="@+id/textView4"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignStart="@+id/textView4" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText4"
-            android:background="@color/input"
-            android:padding="10dp"
-            android:hint="tu wprowadź uwagi"
-            android:textColorHint="@color/colorPrimaryDark"
-            android:singleLine="true"
-            android:layout_below="@+id/textViewComment"
-            android:layout_alignLeft="@+id/textViewComment"
-            android:layout_alignStart="@+id/textViewComment"
-            android:layout_alignRight="@+id/buttonSetTime"
-            android:layout_alignEnd="@+id/buttonSetTime" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="po posiłku"
+                android:id="@+id/checkBox2"
+                android:layout_below="@+id/checkBox"
+                android:layout_alignRight="@+id/checkBox"
+                android:layout_alignEnd="@+id/checkBox"
+                android:checked="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_alignLeft="@+id/checkBox"
+                android:layout_alignStart="@+id/checkBox" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="uwagi:"
-            android:id="@+id/textViewComment"
-            android:textSize="18dp"
-            android:padding="10dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_below="@+id/checkBox2"
-            android:layout_alignLeft="@+id/checkBox2"
-            android:layout_alignStart="@+id/checkBox2" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText4"
+                android:background="@color/input"
+                android:padding="10dp"
+                android:hint="tu wprowadź uwagi"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:singleLine="true"
+                android:layout_below="@+id/textViewComment"
+                android:layout_alignLeft="@+id/textViewComment"
+                android:layout_alignStart="@+id/textViewComment"
+                android:layout_alignRight="@+id/buttonSetTime"
+                android:layout_alignEnd="@+id/buttonSetTime" />
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="uwagi:"
+                android:id="@+id/textViewComment"
+                android:textSize="18dp"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_below="@+id/checkBox2"
+                android:layout_alignLeft="@+id/checkBox2"
+                android:layout_alignStart="@+id/checkBox2" />
+
+        </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

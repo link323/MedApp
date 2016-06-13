@@ -53,17 +53,15 @@ public class ResultsFragment extends Fragment{
                     }
                     else if(checkedId == R.id.radioButtonDiagramBlood){
                         tableLayout.removeAllViews();
-                        Intent intentDiagram=new Intent(view.getContext(),DiabeticDiagramActivity.class);
+                        Intent intentDiagram=new Intent(view.getContext(),PressureDiagramActivity.class);
                         startActivity(intentDiagram);
-//                        BarChart barChart = new BarChart(getContext());
-//                        DiagramPressure diagram = new DiagramPressure(barChart);
+                        group.clearCheck();
                     }
                     else if(checkedId == R.id.radioButtonDiagramDiabetic){
                         tableLayout.removeAllViews();
                         Intent intentDiagram=new Intent(view.getContext(),DiabeticDiagramActivity.class);
                         startActivity(intentDiagram);
-//                        BarChart barChart = new BarChart(getContext());
-//                        DiagramDiabetic diagram = new DiagramDiabetic();
+                        group.clearCheck();
                     }
                 }
 

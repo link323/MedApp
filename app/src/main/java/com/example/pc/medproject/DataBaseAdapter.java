@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DataBaseAdapter {
@@ -92,9 +93,9 @@ public class DataBaseAdapter {
         db.insert(DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE, null, newValues);
     }
 
-    public List<ResultsDataDiabetic> getAllDiabeticResults() {
+    public List<ResultsDataDiabetic> getAllDiabeticResults(String datetimeStart, String datetimeEnd) {
         List<ResultsDataDiabetic> resultsList = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + DataBaseHelper.DIABETIC_RESULTS_TABLE;
+        String selectQuery = "SELECT  * FROM " + DataBaseHelper.DIABETIC_RESULTS_TABLE+" WHERE date BETWEEN Datetime('" + datetimeStart+"') AND Datetime('" +datetimeEnd+"')";
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -106,9 +107,9 @@ public class DataBaseAdapter {
         }
         return  resultsList;
     }
-    public List<ResultsDataBloodPressure> getAllBloodPressureResults(){
+    public List<ResultsDataBloodPressure> getAllBloodPressureResults(String datetimeStart, String datetimeEnd){
         List<ResultsDataBloodPressure> resultsList = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE;
+        String selectQuery = "SELECT  * FROM " + DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE+" WHERE date(date) BETWEEN date('" + datetimeStart+"') AND date('" +datetimeEnd+"')";
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -117,6 +118,44 @@ public class DataBaseAdapter {
                 ResultsDataBloodPressure data = new ResultsDataBloodPressure(Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
                 resultsList.add(data);
             } while (cursor.moveToNext());
+        }
+        return  resultsList;
+    }
+
+
+    public List<ResultsDataDiabetic> getAllDiabeticResultsTest() {
+        List<ResultsDataDiabetic> resultsList = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + DataBaseHelper.DIABETIC_RESULTS_TABLE;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Log.d("data from table ", "start!!!!!!");
+
+            do {
+                Log.d("data from table ", cursor.getString(0)+" "+cursor.getString(1)+" " +cursor.getString(2)+" "+cursor.getString(3)+" "+cursor.getString(4)+" "+cursor.getString(5));
+                ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(2)),cursor.getString(3),Boolean.parseBoolean(cursor.getString(4)));
+                resultsList.add(data);
+            } while (cursor.moveToNext());
+            Log.d("data from table ", "stop!!!!!!");
+
+        }
+        return  resultsList;
+    }
+    public List<ResultsDataBloodPressure> getAllBloodPressureResultsTest(){
+        List<ResultsDataBloodPressure> resultsList = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Log.d("data from table ", "start!!!!!!");
+
+            do {
+                Log.d("data from table ", cursor.getString(0) +" " +cursor.getString(1) +" " + cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4));
+                ResultsDataBloodPressure data = new ResultsDataBloodPressure(Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
+                resultsList.add(data);
+            } while (cursor.moveToNext());
+            Log.d("data from table ", "stop!!!!!!");
+
         }
         return  resultsList;
     }

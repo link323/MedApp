@@ -47,7 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 			+ ID_COLUMN + " integer primary key, "
 			+ PESEL_COLUMN + " text, "
 			+ RESULT_COLUMN + " int, "
-			+ DATE_COLUMN + " datetime, "
+			+ DATE_COLUMN + " date, "
 			+ FOOD_COLUMN + " boolean, "
 			+ COMMENT_COLUMN + " text" + "); ";
 
@@ -56,7 +56,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 			+ PESEL_COLUMN + " text, "
 			+ SYSTOLIC_COLUMN + " int, "
 			+ DIASTOLIC_COLUMN + " int, "
-			+ DATE_COLUMN + " datetime, "
+			+ DATE_COLUMN + " date, "
 			+ COMMENT_COLUMN + " text" + "); ";
 
 	public DataBaseHelper(Context context, String name, CursorFactory factory, int version){
