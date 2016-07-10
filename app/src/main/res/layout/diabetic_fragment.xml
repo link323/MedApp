@@ -5,15 +5,15 @@
     android:background="@color/windowBackground"
     android:weightSum="1">
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView2"
-        android:layout_weight="1.41">
+        android:id="@+id/scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true" >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.41">
+            android:layout_weight="1.15">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,20 +53,20 @@
                 android:id="@+id/button"
                 android:background="@color/colorText1"
                 android:textSize="30dp"
+                android:layout_marginTop="34dp"
                 android:layout_below="@+id/editText4"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="45dp" />
+                android:layout_centerHorizontal="true" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/setTime"
                 android:id="@+id/buttonSetTime"
+                android:layout_marginRight="20dp"
                 android:background="@color/colorBackground"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
-                android:layout_alignTop="@+id/textView4"
+                android:layout_alignBottom="@+id/textView4"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
@@ -78,10 +78,9 @@
                 android:textSize="18dp"
                 android:padding="10dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginTop="32dp"
                 android:layout_below="@+id/editText"
-                android:layout_alignLeft="@+id/textView2"
-                android:layout_alignStart="@+id/textView2"
+                android:layout_alignLeft="@+id/editText"
+                android:layout_alignStart="@+id/editText"
                 android:layout_toLeftOf="@+id/buttonSetTime"
                 android:layout_toStartOf="@+id/buttonSetTime" />
 

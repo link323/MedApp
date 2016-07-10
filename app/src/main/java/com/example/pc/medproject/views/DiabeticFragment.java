@@ -29,13 +29,13 @@ public class DiabeticFragment extends Fragment{
         // Required empty public constructor
     }
 
-    EditText glucose, comment;
-    CheckBox boxBefore, boxAfter;
-    Button buttonAdd, buttonSetTime;
-    ArrayList<String> time = new ArrayList<>();
-    DataBaseAdapter db;
-    DateTime dateTime = new DateTime();
-    SharedPreferences preferences;
+    private EditText glucose, comment;
+    private CheckBox boxBefore, boxAfter;
+    private Button buttonAdd, buttonSetTime;
+    private ArrayList<String> time = new ArrayList<>();
+    private DataBaseAdapter db;
+    private DateTime dateTime = new DateTime();
+    private SharedPreferences preferences;
 
     // url to create new product
     private static String url_create_product = "http://api.androidhive.info/android_connect/create_product.php";
@@ -73,7 +73,7 @@ public class DiabeticFragment extends Fragment{
                 save(v);
             }
         });
-
+        //db.close();
         return view;
     }
 
@@ -111,13 +111,21 @@ public class DiabeticFragment extends Fragment{
         else{
             InputAnalyzer analyzer = new InputAnalyzer(Integer.parseInt(glucose.getText().toString()), boxBefore.isChecked());
             if(analyzer.checkDiabeticInput(v.getContext()) && boxBefore.isChecked() == true) {
+                Log.d("DiabeticFragment ", "analyzer.checkDiabeticInput(v.getContext()) && boxBefore.isChecked() == true "+time.get(0));
                 db.insertEntryToDiabeticTable(pesel, Integer.parseInt(glucose.getText().toString()), time.get(0), true, comment.getText().toString());
-                mySQLTaskDiabetic.execute(pesel, glucose.getText().toString(), time.get(0), "true", comment.getText().toString());
+                mySQLTaskDiabetic.execute(pesel, glucose.getText().toString(), time.get(0).toString(), "true", comment.getText().toString());
             }else if(analyzer.checkDiabeticInput(v.getContext()) && boxBefore.isChecked() == false){
+                Log.d("DiabeticFragment ", "analyzer.checkDiabeticInput(v.getContext()) && boxBefore.isChecked() == false "+time.get(0));
                 db.insertEntryToDiabeticTable(pesel, Integer.parseInt(glucose.getText().toString()), time.get(0), false, comment.getText().toString());
-                mySQLTaskDiabetic.execute(pesel, glucose.getText().toString(), time.get(0), "false", comment.getText().toString());
+                mySQLTaskDiabetic.execute(pesel, glucose.getText().toString(), time.get(0).toString(), "false", comment.getText().toString());
             }
             Toast.makeText(v.getContext(), "Zapisano nowy wynik!", Toast.LENGTH_LONG).show();
         }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Close The Database
+        db.close();
     }
 }

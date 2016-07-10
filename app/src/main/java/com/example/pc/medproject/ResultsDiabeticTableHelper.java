@@ -2,6 +2,7 @@ package com.example.pc.medproject;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TableLayout;
@@ -13,10 +14,10 @@ import java.util.List;
 /**
  * Created by PC on 28.05.2016.
  */
-public class ResultsDiabeticTableHelper {
+public class ResultsDiabeticTableHelper implements ResultsTable{
 
-    TableLayout tableLayout;
-    Context context;
+    private TableLayout tableLayout;
+    private Context context;
 
     public ResultsDiabeticTableHelper(TableLayout layout, Context _context){
         tableLayout = layout;
@@ -25,7 +26,8 @@ public class ResultsDiabeticTableHelper {
 
     public void addHeaders(){
         TableRow tr_head = new TableRow(context);
-        tr_head.setBackgroundColor(Color.GRAY);
+        tr_head.setBackgroundColor(Color.rgb(26,31,177));
+
         tr_head.setLayoutParams(new TableLayout.LayoutParams(
                 TableLayout.LayoutParams.FILL_PARENT,
                 TableLayout.LayoutParams.WRAP_CONTENT));
@@ -63,15 +65,18 @@ public class ResultsDiabeticTableHelper {
         DateTime dateTime = new DateTime();
         List<ResultsDataDiabetic> lista = db.getAllDiabeticResults(dateTime.findLastMonthDate(), dateTime.findActualDate());
 
-        db.getAllDiabeticResultsTest();
-
         for(int i=0; i<lista.size(); i++){
             String date = lista.get(i).getDate();
             String result = String.valueOf(lista.get(i).getResult());
             String state = String.valueOf(lista.get(i).getBeforeFood());
-
+            Log.d("ResultsDiabeticTableHel", result +" "+ state+ " "+lista.get(i).getBeforeFood());
             TableRow tr = new TableRow(context);
-            if(i%2!=0) tr.setBackgroundColor(Color.GRAY);
+            if(i%2!=0){
+                tr.setBackgroundColor(Color.rgb(0,96,250));
+            }else {
+                tr.setBackgroundColor(Color.rgb(16,112,224));
+
+            }
             tr.setLayoutParams(new TableLayout.LayoutParams(
                     TableRow.LayoutParams.FILL_PARENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
@@ -85,22 +90,33 @@ public class ResultsDiabeticTableHelper {
 
             TextView labelRESULTS = new TextView(context);
             labelRESULTS.setText(result);
-            if(Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>100)){
-                labelRESULTS.setTextColor(Color.RED);
-            } else if(!Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>140)){
-                labelRESULTS.setTextColor(Color.RED);
-            } else {
-                labelRESULTS.setTextColor(Color.GREEN);
-            }
             labelRESULTS.setId(200 + count);
             tr.addView(labelRESULTS);
 
             TextView labelBEFORE = new TextView(context);
-            labelBEFORE.setText(state);
+            if(state.equals("true")){
+                labelBEFORE.setText("tak");
+            }else {
+                labelBEFORE.setText("nie");
+            }
             labelBEFORE.setTextColor(Color.RED);
             labelBEFORE.setId(200 + count);
             tr.addView(labelBEFORE);
 
+            if(Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>100)){
+                labelRESULTS.setTextColor(Color.RED);
+                labelBEFORE.setTextColor(Color.RED);
+                Log.d("***********pierwsze ",Boolean.valueOf(state)+" "+ Integer.parseInt(result)+ " Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>100)");
+            } else if(!Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>140)){
+                labelRESULTS.setTextColor(Color.RED);
+                labelBEFORE.setTextColor(Color.RED);
+                Log.d("***********drugie ",Boolean.valueOf(state)+" "+ Integer.parseInt(result)+  " !Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>140)");
+            } else {
+                labelRESULTS.setTextColor(Color.GREEN);
+                labelBEFORE.setTextColor(Color.GREEN);
+                Log.d("***********trzecie ",Boolean.valueOf(state)+ " "+ Integer.parseInt(result)+ " Boolean.valueOf(state) && (Integer.parseInt(result)<70 || Integer.parseInt(result)>100)");
+
+            }
             tableLayout.addView(tr, new TableLayout.LayoutParams(
                     TableRow.LayoutParams.FILL_PARENT,
                     TableRow.LayoutParams.WRAP_CONTENT));

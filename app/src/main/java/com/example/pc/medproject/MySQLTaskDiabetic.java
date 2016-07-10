@@ -3,6 +3,7 @@ package com.example.pc.medproject;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedWriter;
@@ -49,6 +50,7 @@ public class MySQLTaskDiabetic extends AsyncTask<String,String,String>{
 //        String url_create_product = "http://10.0.2.2:80/android_connect/create_product.php";
         String url_create_product = "http://192.168.0.11/android-connector/create_product_diabetic.php";
         try{
+
             URL url = new URL(url_create_product);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
@@ -61,6 +63,7 @@ public class MySQLTaskDiabetic extends AsyncTask<String,String,String>{
                     URLEncoder.encode("date_time", "UTF-8") + "=" +URLEncoder.encode(time, "UTF-8")+" & "+
                     URLEncoder.encode("before_food", "UTF-8") + "=" +URLEncoder.encode(String.valueOf(beforeFood), "UTF-8")+" & "+
                     URLEncoder.encode("comment", "UTF-8") + "=" +URLEncoder.encode(comment, "UTF-8");
+            Log.d("MySqlTaskDiabetic ", time);
             bufferedWriter.write(data);
             bufferedWriter.flush();
             bufferedWriter.close();

@@ -14,11 +14,11 @@ public class StatisticsTask {
     List<Integer> listOfCountedElements;
     DateTime dateTime = new DateTime();
 
-    int counterHipoglicemia = 0, counterCorrect = 0, counterHiperglicemia = 0;
-    int counterOptymalne1 = 0, counterPrawidlowe1 = 0, counterWysokiePrawidlowe1 = 0;
-    int counterNadcisnienie1st1 = 0, counterNadcisnienie2st1 = 0,  counterNadcisnienie3st1 = 0;
-    int counterOptymalne2 = 0, counterPrawidlowe2 = 0, counterWysokiePrawidlowe2 = 0;
-    int counterNadcisnienie1st2 = 0, counterNadcisnienie2st2 = 0,  counterNadcisnienie3st2 = 0;
+    private int counterHipoglicemia = 0, counterCorrect = 0, counterHiperglicemia = 0;
+    private int counterOptymalne1 = 0, counterPrawidlowe1 = 0, counterWysokiePrawidlowe1 = 0;
+    private int counterNadcisnienie1st1 = 0, counterNadcisnienie2st1 = 0,  counterNadcisnienie3st1 = 0;
+    private int counterOptymalne2 = 0, counterPrawidlowe2 = 0, counterWysokiePrawidlowe2 = 0;
+    private int counterNadcisnienie1st2 = 0, counterNadcisnienie2st2 = 0,  counterNadcisnienie3st2 = 0;
     //na czczo
     private int lowerMarginCorrectBF = 70, upperMarginCorrectBF = 100, upperMarginUncorrectBF = 125;
     //120 min po

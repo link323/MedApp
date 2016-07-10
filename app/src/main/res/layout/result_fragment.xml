@@ -21,27 +21,10 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="wykres ciśnienia krwi"
-            android:id="@+id/radioButtonDiagramBlood"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:checked="false"
-            android:layout_column="9" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="poziom cukru"
             android:id="@+id/radioButtonDiabetic"
             android:layout_alignTop="@+id/radioButtonBlood"
             android:textColor="@color/colorPrimaryDark"
-            android:checked="false" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="wykres poziomu cukier"
-            android:id="@+id/radioButtonDiagramDiabetic"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_alignTop="@+id/radioButtonBlood"
             android:checked="false" />
     </RadioGroup>
     <ScrollView
@@ -60,4 +43,5 @@
             android:stretchColumns="*">
         </TableLayout>
     </ScrollView>
+
 </RelativeLayout>

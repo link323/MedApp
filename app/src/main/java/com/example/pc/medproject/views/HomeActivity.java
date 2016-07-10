@@ -52,11 +52,11 @@ public class HomeActivity extends Activity
                 String storedPassword = dataBaseAdapter.getSinlgeEntry(userName);
 
                 if (password.equals(storedPassword)) {
-                    Toast.makeText(HomeActivity.this, "Congrats: Login Successfull", Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeActivity.this, "Witaj "+userName+"!", Toast.LENGTH_LONG).show();
                     Intent intentMenu = new Intent(getApplicationContext(), MenuTabsActivity.class);
                     startActivity(intentMenu);
                 } else {
-                    Toast.makeText(HomeActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeActivity.this, "Login i hasło do siebie nie pasują!", Toast.LENGTH_LONG).show();
                 }
             }
         });

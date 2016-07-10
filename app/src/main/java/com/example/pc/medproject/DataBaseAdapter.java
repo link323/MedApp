@@ -100,8 +100,8 @@ public class DataBaseAdapter {
 
         if (cursor.moveToFirst()) {
             do {
-                Log.d("data from table ", cursor.getString(0)+" "+cursor.getString(1)+" " +cursor.getString(2)+" "+cursor.getString(3)+" "+cursor.getString(4)+" "+cursor.getString(5));
-                ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(2)),cursor.getString(3),Boolean.parseBoolean(cursor.getString(4)));
+                Log.d("data from table ", cursor.getString(0)+" "+cursor.getString(1)+" " +cursor.getString(2)+" "+cursor.getString(3)+" "+cursor.getString(4)+" "+cursor.getString(5) +" bla bla "+ (Integer.parseInt(cursor.getString(4))==1?true:false));
+                ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(2)),cursor.getString(3),(Integer.parseInt(cursor.getString(4))==1?true:false));
                 resultsList.add(data);
             } while (cursor.moveToNext());
         }
@@ -123,40 +123,40 @@ public class DataBaseAdapter {
     }
 
 
-    public List<ResultsDataDiabetic> getAllDiabeticResultsTest() {
-        List<ResultsDataDiabetic> resultsList = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + DataBaseHelper.DIABETIC_RESULTS_TABLE;
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            Log.d("data from table ", "start!!!!!!");
-
-            do {
-                Log.d("data from table ", cursor.getString(0)+" "+cursor.getString(1)+" " +cursor.getString(2)+" "+cursor.getString(3)+" "+cursor.getString(4)+" "+cursor.getString(5));
-                ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(2)),cursor.getString(3),Boolean.parseBoolean(cursor.getString(4)));
-                resultsList.add(data);
-            } while (cursor.moveToNext());
-            Log.d("data from table ", "stop!!!!!!");
-
-        }
-        return  resultsList;
-    }
-    public List<ResultsDataBloodPressure> getAllBloodPressureResultsTest(){
-        List<ResultsDataBloodPressure> resultsList = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE;
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            Log.d("data from table ", "start!!!!!!");
-
-            do {
-                Log.d("data from table ", cursor.getString(0) +" " +cursor.getString(1) +" " + cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4));
-                ResultsDataBloodPressure data = new ResultsDataBloodPressure(Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
-                resultsList.add(data);
-            } while (cursor.moveToNext());
-            Log.d("data from table ", "stop!!!!!!");
-
-        }
-        return  resultsList;
-    }
+//    public List<ResultsDataDiabetic> getAllDiabeticResultsTest() {
+//        List<ResultsDataDiabetic> resultsList = new ArrayList<>();
+//        String selectQuery = "SELECT  * FROM " + DataBaseHelper.DIABETIC_RESULTS_TABLE;
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//
+//        if (cursor.moveToFirst()) {
+//            Log.d("data from table ", "start!!!!!!");
+//
+//            do {
+//                Log.d("data from table ", cursor.getString(0)+" "+cursor.getString(1)+" " +cursor.getString(2)+" "+cursor.getString(3)+" "+cursor.getString(4)+" "+cursor.getString(5) +" bla bla "+ (Integer.parseInt(cursor.getString(4))==1?true:false));
+//                ResultsDataDiabetic data = new ResultsDataDiabetic(Integer.parseInt(cursor.getString(2)),cursor.getString(3),Integer.parseInt(cursor.getString(4))==1?true:false);
+//                resultsList.add(data);
+//            } while (cursor.moveToNext());
+//            Log.d("data from table ", "stop!!!!!!");
+//
+//        }
+//        return  resultsList;
+//    }
+//    public List<ResultsDataBloodPressure> getAllBloodPressureResultsTest(){
+//        List<ResultsDataBloodPressure> resultsList = new ArrayList<>();
+//        String selectQuery = "SELECT  * FROM " + DataBaseHelper.BLOOD_PRESSURE_RESULTS_TABLE;
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//
+//        if (cursor.moveToFirst()) {
+//            Log.d("data from table ", "start!!!!!!");
+//
+//            do {
+//                Log.d("data from table ", cursor.getString(0) +" " +cursor.getString(1) +" " + cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4));
+//                ResultsDataBloodPressure data = new ResultsDataBloodPressure(Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
+//                resultsList.add(data);
+//            } while (cursor.moveToNext());
+//            Log.d("data from table ", "stop!!!!!!");
+//
+//        }
+//        return  resultsList;
+//    }
 }

@@ -42,17 +42,17 @@ public class PressureDiagramActivity extends Activity {
         entriesFirstGroup.add(new BarEntry(list.get(0), 0));
         entriesFirstGroup.add(new BarEntry(list.get(1), 1));
         entriesFirstGroup.add(new BarEntry(list.get(2), 2));
-        entriesFirstGroup.add(new BarEntry(list.get(3), 0));
-        entriesFirstGroup.add(new BarEntry(list.get(4), 1));
-        entriesFirstGroup.add(new BarEntry(list.get(5), 2));
+        entriesFirstGroup.add(new BarEntry(list.get(3), 3));
+        entriesFirstGroup.add(new BarEntry(list.get(4), 4));
+        entriesFirstGroup.add(new BarEntry(list.get(5), 5));
 
         ArrayList<BarEntry> entriesSecondGroup = new ArrayList<>();
         entriesSecondGroup.add(new BarEntry(list.get(6), 0));
         entriesSecondGroup.add(new BarEntry(list.get(7), 1));
         entriesSecondGroup.add(new BarEntry(list.get(8), 2));
-        entriesSecondGroup.add(new BarEntry(list.get(9), 0));
-        entriesSecondGroup.add(new BarEntry(list.get(10), 1));
-        entriesSecondGroup.add(new BarEntry(list.get(11), 2));
+        entriesSecondGroup.add(new BarEntry(list.get(9), 3));
+        entriesSecondGroup.add(new BarEntry(list.get(10), 4));
+        entriesSecondGroup.add(new BarEntry(list.get(11), 5));
 
         BarDataSet dataset1 = new BarDataSet(entriesFirstGroup, "ciśnienie skurczowe");
         dataset1.setColors(ColorTemplate.COLORFUL_COLORS);

@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by PC on 28.05.2016.
  */
-public class ResultsBloodPressureTableHelper {
+public class ResultsBloodPressureTableHelper implements ResultsTable{
 
     TableLayout tableLayout;
     Context context;
@@ -24,7 +24,7 @@ public class ResultsBloodPressureTableHelper {
 
     public void addHeaders(){
         TableRow tr_head = new TableRow(context);
-        tr_head.setBackgroundColor(Color.GRAY);
+        tr_head.setBackgroundColor(Color.rgb(26,31,177));
         tr_head.setLayoutParams(new TableLayout.LayoutParams(
                 TableLayout.LayoutParams.FILL_PARENT,
                 TableLayout.LayoutParams.WRAP_CONTENT));
@@ -63,15 +63,18 @@ public class ResultsBloodPressureTableHelper {
 
         List<ResultsDataBloodPressure> lista = db.getAllBloodPressureResults(datetime.findLastMonthDate(), datetime.findActualDate());
 
-        db.getAllBloodPressureResultsTest();
-
         for(int i=0; i<lista.size(); i++){
             String date = lista.get(i).getDate();
             String result1 = String.valueOf(lista.get(i).getResult1());
             String result2 = String.valueOf(lista.get(i).getResult2());
 
             TableRow tr = new TableRow(context);
-            if(i%2!=0) tr.setBackgroundColor(Color.GRAY);
+            if(i%2!=0){
+                tr.setBackgroundColor(Color.rgb(0,96,250));
+            }else {
+                tr.setBackgroundColor(Color.rgb(16,112,224));
+
+            }
             tr.setLayoutParams(new TableLayout.LayoutParams(
                     TableRow.LayoutParams.FILL_PARENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
@@ -86,19 +89,16 @@ public class ResultsBloodPressureTableHelper {
             TextView labelRESULTS = new TextView(context);
             labelRESULTS.setText(result1);
             labelRESULTS.setId(200 + count);
-            if(Integer.parseInt(result1)<140 || Integer.parseInt(result2)<90){
-                labelRESULTS.setTextColor(Color.GREEN);
-            }else {
-                labelRESULTS.setTextColor(Color.RED);
-            }
             tr.addView(labelRESULTS);
 
             TextView labelBEFORE = new TextView(context);
             labelBEFORE.setText(result2);
             if(Integer.parseInt(result1)<140 || Integer.parseInt(result2)<90){
                 labelBEFORE.setTextColor(Color.GREEN);
+                labelRESULTS.setTextColor(Color.GREEN);
             }else {
                 labelBEFORE.setTextColor(Color.RED);
+                labelRESULTS.setTextColor(Color.RED);
             }
             labelBEFORE.setId(200 + count);
             tr.addView(labelBEFORE);
@@ -108,5 +108,6 @@ public class ResultsBloodPressureTableHelper {
                     TableRow.LayoutParams.WRAP_CONTENT));
             count++;
         }
+        db.close();
     }
 }

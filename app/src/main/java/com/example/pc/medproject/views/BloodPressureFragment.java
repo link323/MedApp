@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.pc.medproject.DataBaseAdapter;
 import com.example.pc.medproject.DateTime;
@@ -68,6 +67,7 @@ public class BloodPressureFragment extends Fragment{
             }
         });
 
+        //db.close();
         return view;
     }
 
@@ -116,5 +116,11 @@ public class BloodPressureFragment extends Fragment{
                         rozkurczowe.getText().toString(),  time.get(0), comment.getText().toString());
             }
         }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Close The Database
+        db.close();
     }
 }

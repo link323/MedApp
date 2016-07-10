@@ -51,6 +51,7 @@ public class MenuTabsActivity extends AppCompatActivity {
         adapter.addFragment(new DiabeticFragment(), "cukier");
         adapter.addFragment(new BloodPressureFragment(), "ciśnienie");
         adapter.addFragment(new ResultsFragment(), "wyniki");
+        adapter.addFragment(new StatisticFragment(), "statystyki");
         viewPager.setAdapter(adapter);
     }
 
@@ -85,19 +86,14 @@ public class MenuTabsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Toast.makeText(getApplicationContext(), "setting!", Toast.LENGTH_LONG).show();
             Intent intentHome = new Intent(getApplicationContext(), UserDataActivity.class);

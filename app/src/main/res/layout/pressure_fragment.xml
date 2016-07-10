@@ -106,10 +106,10 @@
                 android:textSize="18dp"
                 android:padding="10dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_centerVertical="true"
+                android:layout_weight="1.15"
+                android:layout_below="@+id/textView4"
                 android:layout_alignLeft="@+id/textView4"
-                android:layout_alignStart="@+id/textView4"
-                android:layout_weight="1.15" />
+                android:layout_alignStart="@+id/textView4" />
 
             <EditText
                 android:layout_width="match_parent"

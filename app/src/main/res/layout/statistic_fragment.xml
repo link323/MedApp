@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/windowBackground"
+    android:weightSum="1">
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="619dp"
+        android:fillViewport="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.15">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonDiagramDiabetic"
+                android:src="@drawable/columns"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/minWynik1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/sredniaWynik1"
+                android:layout_below="@+id/srednia1"
+                android:layout_toLeftOf="@+id/buttonDiagramDiabetic"
+                android:layout_toStartOf="@+id/buttonDiagramDiabetic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/medianaWynik1"
+                android:layout_below="@+id/mediana1"
+                android:layout_alignLeft="@+id/max1"
+                android:layout_alignStart="@+id/max1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="ŚREDNIA"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/srednia1"
+                android:layout_alignBaseline="@+id/mediana1"
+                android:layout_alignBottom="@+id/mediana1"
+                android:layout_alignLeft="@+id/sredniaWynik1"
+                android:layout_alignStart="@+id/sredniaWynik1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="MEDIANA"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/mediana1"
+                android:layout_marginTop="28dp"
+                android:layout_below="@+id/textView16"
+                android:layout_toRightOf="@+id/buttonDiagramDiabetic"
+                android:layout_toEndOf="@+id/buttonDiagramDiabetic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="MINIMUM"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/min1"
+                android:layout_marginTop="31dp"
+                android:layout_below="@+id/sredniaWynik1"
+                android:layout_alignLeft="@+id/sredniaWynik1"
+                android:layout_alignStart="@+id/sredniaWynik1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="MAKSIMUM"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/max1"
+                android:layout_alignTop="@+id/min1"
+                android:layout_toRightOf="@+id/buttonDiagramDiabetic"
+                android:layout_toEndOf="@+id/buttonDiagramDiabetic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/minWynik1"
+                android:layout_below="@+id/min1"
+                android:layout_alignLeft="@+id/min1"
+                android:layout_alignStart="@+id/min1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/maxWynik1"
+                android:layout_below="@+id/max1"
+                android:layout_alignLeft="@+id/max1"
+                android:layout_alignStart="@+id/max1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Statystyki poziomu cukru z ostatnich 30 dni:"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/textView16"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Statystyki poziomu ciśnienia krwi z ostatnich 30 dni:"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/textView17"
+                android:layout_below="@+id/buttonDiagramDiabetic"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="32dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="ŚREDNIA"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/srednia2"
+                android:layout_below="@+id/textView17"
+                android:layout_toLeftOf="@+id/buttonDiagramDiabetic"
+                android:layout_toStartOf="@+id/buttonDiagramDiabetic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/sredniaWynik2"
+                android:layout_below="@+id/srednia2"
+                android:layout_alignRight="@+id/srednia2"
+                android:layout_alignEnd="@+id/srednia2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="MEDIANA"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/mediana2"
+                android:layout_above="@+id/medianaWynik2"
+                android:layout_alignLeft="@+id/maxWynik1"
+                android:layout_alignStart="@+id/maxWynik1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/medianaWynik2"
+                android:layout_alignTop="@+id/sredniaWynik2"
+                android:layout_alignLeft="@+id/mediana2"
+                android:layout_alignStart="@+id/mediana2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/pomiaryWynik2"
+                android:layout_below="@+id/min2"
+                android:layout_alignRight="@+id/min2"
+                android:layout_alignEnd="@+id/min2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="MAKSIMUM"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/max2"
+                android:layout_above="@+id/maxWynik2"
+                android:layout_toRightOf="@+id/buttonDiagramDiabetic"
+                android:layout_alignRight="@+id/textView16"
+                android:layout_alignEnd="@+id/textView16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/maxWynik2"
+                android:layout_alignTop="@+id/minWynik2"
+                android:layout_alignLeft="@+id/max2"
+                android:layout_alignStart="@+id/max2"
+                android:layout_alignRight="@+id/max2"
+                android:layout_alignEnd="@+id/max2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="MINIMUM"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/min2"
+                android:layout_below="@+id/sredniaWynik2"
+                android:layout_alignRight="@+id/sredniaWynik2"
+                android:layout_alignEnd="@+id/sredniaWynik2"
+                android:layout_marginTop="28dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/minWynik2"
+                android:layout_below="@+id/min2"
+                android:layout_alignRight="@+id/min2"
+                android:layout_alignEnd="@+id/min2" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonDiagramPressure"
+                android:src="@drawable/columns"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/maxWynik2"
+                android:layout_toLeftOf="@+id/maxWynik2"
+                android:layout_toStartOf="@+id/maxWynik2" />
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -51,23 +51,9 @@ public class ResultsFragment extends Fragment{
                         helper.addHeaders();
                         helper.addData();
                     }
-                    else if(checkedId == R.id.radioButtonDiagramBlood){
-                        tableLayout.removeAllViews();
-                        Intent intentDiagram=new Intent(view.getContext(),PressureDiagramActivity.class);
-                        startActivity(intentDiagram);
-                        group.clearCheck();
-                    }
-                    else if(checkedId == R.id.radioButtonDiagramDiabetic){
-                        tableLayout.removeAllViews();
-                        Intent intentDiagram=new Intent(view.getContext(),DiabeticDiagramActivity.class);
-                        startActivity(intentDiagram);
-                        group.clearCheck();
-                    }
                 }
-
             }
         });
-
         return view;
     }
 }
