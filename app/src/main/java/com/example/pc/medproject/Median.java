@@ -13,7 +13,6 @@ public class Median {
     public String countMedianOfPressure(List<ResultsDataBloodPressure> list){
         int[] result1 = new int[list.size()];
         int[] result2 = new int[list.size()];
-        int medianResult1, medianResult2;
 
         for(int i=0; i<list.size(); i++){
             result1[i] = list.get(i).getResult1();
@@ -22,24 +21,22 @@ public class Median {
         Arrays.sort(result1);
         Arrays.sort(result2);
 
-        medianResult1 = median(result1);
-        medianResult2 = median(result2);
-        Log.d("mediana ", medianResult1 + " " + medianResult2);
-        return ""+medianResult1+"/"+medianResult2;
+        String medianResult1 = String.valueOf(median(result1));
+        String medianResult2 = String.valueOf(median(result2));
+
+        return medianResult1+"/"+medianResult2;
     }
 
     public String countMedianOfDiabebetic(List<ResultsDataDiabetic> list){
         int[] result = new int[list.size()];
-        int medianResult;
 
         for(int i=0; i<list.size(); i++){
             result[i] = list.get(i).getResult();
         }
         Arrays.sort(result);
+        String medianResult = String.valueOf(median(result));
 
-        medianResult = median(result);
-        Log.d("mediana ", ""+medianResult);
-        return ""+medianResult;
+        return medianResult;
     }
 
     public int median(int[] table){
